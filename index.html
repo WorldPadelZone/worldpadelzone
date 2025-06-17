@@ -2,45 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>World Padel Zone</title>
-  <link rel="icon" href="assets/images/logo_wpz.png">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
 </head>
-<body>
-  <header class="header">
-    <img src="assets/images/logo_wpz.png" alt="WPZ Logo" class="logo">
-  </header>
-  <section class="hero">
-    <img src="assets/images/worldpadelzonehero.jpg" alt="Hero Background" class="hero__bg">
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h1>Master Padel,<br>Connect Globally</h1>
-      <p>Join the world's fastest-growing racket sport community. From beginner basics to professional mastery—learn, play, and compete with 25 million players worldwide.</p>
+<body class="flex flex-col min-h-screen bg-[#101a23] text-white font-sans">
+  <!-- Hero -->
+  <header class="relative flex-1 bg-cover bg-center" style="background-image:url('assets/images/worldpadelzonehero.jpg')">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+      <img src="assets/images/logo_wpz.png" alt="WPZ logo" class="w-24 mb-6">
+      <h1 class="text-4xl font-bold mb-2">Master Padel, Connect Globally</h1>
+      <p class="max-w-md mb-6">Join the world's fastest-growing racket sport community. From beginner basics to professional mastery—learn, play, and compete with 25 million players worldwide.</p>
+      <nav class="flex flex-wrap gap-3 justify-center">
+        <a href="beginner.html" class="btn">Complete Beginner</a>
+        <a href="beginner.html#intermediate" class="btn">Developing Player</a>
+        <a href="beginner.html#advanced" class="btn">Competitive Player</a>
+      </nav>
     </div>
-  </section>
-  <section class="grid-cards">
-    <a href="beginner.html" class="card">
-      <img src="assets/images/worldpadelzone01.jpg" alt="Beginner">
-      <h2>Complete Beginner</h2>
-      <small>Never played padel</small>
-    </a>
-    <a href="intermediate.html" class="card">
-      <img src="assets/images/worldpadelzone02.jpg" alt="Developing">
-      <h2>Developing Player</h2>
-      <small>Know basics, want to improve</small>
-    </a>
-    <a href="advanced.html" class="card">
-      <img src="assets/images/worldpadelzone03.jpg" alt="Competitive">
-      <h2>Competitive Player</h2>
-      <small>Tournament ready</small>
-    </a>
-    <a href="expert.html" class="card">
-      <img src="assets/images/worldpadelzone05.jpg" alt="Expert">
-      <h2>Expert</h2>
-      <small>Pro-level mastery</small>
-    </a>
-  </section>
-  <script src="assets/js/main.js"></script>
+  </header>
+
+  <!-- Bottom Navigation -->
+  <nav id="bottom-nav" class="flex justify-around items-center h-16 bg-[#182734]">
+    <a href="index.html" class="nav-item" data-label="Home">🏠</a>
+    <a href="#"           class="nav-item" data-label="Play">🎾</a>
+    <a href="index.html"  class="nav-item active" data-label="Home">🏠</a>
+    <a href="beginner.html" class="nav-item" data-label="Learn">🎓</a>
+    <a href="#"           class="nav-item" data-label="Shop">🛍️</a>
+  </nav>
+
+  <script>
+    // highlight active nav link
+    document.querySelectorAll('#bottom-nav .nav-item').forEach(a => {
+      if (a.href === location.href) a.classList.add('active');
+    });
+  </script>
 </body>
 </html>
