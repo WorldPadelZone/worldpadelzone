@@ -1,24 +1,22 @@
-# World Padel Zone - Basic Repo Template
-
-A simple static site template for GitHub Pages.
+# World Padel Zone Starter
 
 ## Structure
 
 ```
-/padel_basic_repo
+world-padel-zone-starter/
 ├── index.html
-├── beginner.html
-├── intermediate.html
-├── advanced.html
-├── expert.html
-├── assets/
-│   ├── css/styles.css
-│   ├── js/main.js
-│   └── images/
-│       ├── logo_wpz.png
-│       ├── worldpadelzonehero.jpg
-│       ├── worldpadelzone01.jpg
-│       ├── worldpadelzone02.jpg
-│       ├── worldpadelzone03.jpg
-│       └── worldpadelzone05.jpg
+├── css/
+│   └── styles.css
+├── js/
+│   └── app.js
+├── images/
+│   └── hero-bg.jpg   (add your hero image here)
+└── README.md
 ```
+
+### Usage
+
+1. Unzip and copy into your local repo.
+2. Add your images into the `images/` folder.
+3. Open `index.html` in your browser to preview.
+4. Commit and push to GitHub.
