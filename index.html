@@ -1,88 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>World Padel Zone</title>
-  <link rel="icon" href="assets/images/logo_wpz.png" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/images/logo_wpz.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <style>
-    /* Mobile-first base */
-    body { margin:0; font-family:sans-serif; }
-    .header { padding:1rem; text-align:center; }
-    .logo { max-width:120px; }
-    .hero { position:relative; width:100%; height:60vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .hero__bg { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
-    .hero__overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); }
-    .hero__txt { position:relative; color:#fff; padding:1rem; text-align:center; max-width:90%; }
-    .hero__txt h1 { font-size:1.75rem; margin-bottom:1rem; line-height:1.2; }
-    .hero__txt p { font-size:1rem; }
-    .grid-cards { display:grid; grid-template-columns:1fr; gap:1rem; padding:1rem; }
-    .card { display:block; border-radius:0.5rem; overflow:hidden; text-decoration:none; color:#000; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition:transform .2s; }
-    .card img { width:100%; height:auto; display:block; }
-    .card h2 { font-size:1.25rem; margin:0.5rem 1rem 0; }
-    .card small { display:block; margin:0 1rem 1rem; color:#555; }
-    .card:hover { transform: translateY(-4px); }
-    /* Desktop tweaks */
-    @media(min-width:640px) {
-      .hero__txt h1 { font-size:2.5rem; }
-      .hero__txt p { font-size:1.125rem; }
+    /* Mobile-first logo sizing */
+    .logo {
+      max-width: 120px;
+      width: auto;
     }
-    @media(min-width:768px) {
-      .hero { height:75vh; }
-      .grid-cards { grid-template-columns:repeat(2,1fr); padding:2rem; gap:1.5rem; }
+    @media (min-width: 768px) {
+      .logo {
+        max-width: 200px;
+      }
     }
-    @media(min-width:1024px) {
-      .grid-cards { grid-template-columns:repeat(4,1fr); }
-    }
-    /* Bottom nav */
-    .bottom-nav { position:fixed; bottom:0; left:0; width:100%; background:#fff; border-top:1px solid #ddd; display:flex; }
-    .bottom-nav a { flex:1; text-align:center; padding:0.75rem 0; font-size:0.875rem; color:#333; text-decoration:none; }
-    .bottom-nav a.active, .bottom-nav a:hover { background:#f0f0f0; }
   </style>
 </head>
 <body>
   <header class="header">
-    <img src="assets/images/logo_wpz.png" alt="WPZ Logo" class="logo" />
+    <img src="assets/images/logo_wpz.png" alt="WPZ Logo" class="logo">
   </header>
 
-  <section class="hero">
-    <img src="assets/images/worldpadelzonehero.jpg" alt="Padel Hero" class="hero__bg" />
+  <section class="hero hero--full">
+    <img src="assets/images/worldpadelzonehero.jpg" alt="Padel Hero" class="hero__bg">
     <div class="hero__overlay"></div>
     <div class="hero__txt">
-      <h1>Master Padel,<br />Connect Globally</h1>
+      <h1>Master Padel,<br>Connect Globally</h1>
       <p>Join the world's fastest-growing racket sport community. From beginner basics to professional mastery—learn, play, and compete with 25 million players worldwide.</p>
     </div>
   </section>
 
   <section class="grid-cards">
     <a href="beginner.html" class="card">
-      <img src="assets/images/worldpadelzone00.jpg" alt="Complete Beginner" />
+      <img src="assets/images/worldpadelzone01.jpg" alt="Beginner">
       <h2>Complete Beginner</h2>
       <small>Never played padel</small>
     </a>
     <a href="intermediate.html" class="card">
-      <img src="assets/images/worldpadelzone12.jpg" alt="Developing Player" />
+      <img src="assets/images/worldpadelzone02.jpg" alt="Developing">
       <h2>Developing Player</h2>
       <small>Know basics, want to improve</small>
     </a>
     <a href="advanced.html" class="card">
-      <img src="assets/images/worldpadelzone03.jpg" alt="Competitive Player" />
+      <img src="assets/images/worldpadelzone03.jpg" alt="Competitive">
       <h2>Competitive Player</h2>
       <small>Tournament ready</small>
     </a>
     <a href="expert.html" class="card">
-      <img src="assets/images/worldpadelzone01.jpg" alt="Expert" />
+      <img src="assets/images/worldpadelzone05.jpg" alt="Expert">
       <h2>Expert</h2>
       <small>Pro-level mastery</small>
     </a>
   </section>
 
+  <!-- Additional Info Sections -->
+  <section class="info-sections">
+    <div class="info-block">
+      <h2>Explore World Padel Zone</h2>
+      <p>Discover everything you need to elevate your padel game and connect with the global community.</p>
+    </div>
+    <div class="info-block">
+      <h2>Learn Padel</h2>
+      <p>Master the fundamentals with our comprehensive learning system. From beginner basics to advanced techniques.</p>
+      <a href="beginner.html" class="btn">Start Learning</a>
+    </div>
+    <div class="info-block">
+      <h2>Equipment Reviews</h2>
+      <p>Find the perfect gear with our in-depth reviews and buying guides from padel experts worldwide.</p>
+      <a href="equipment.html" class="btn">Browse Reviews</a>
+    </div>
+    <div class="info-block">
+      <h2>Travel Corner</h2>
+      <p>Discover amazing padel destinations and book exclusive travel packages to play around the world.</p>
+      <a href="travel.html" class="btn">Explore Destinations</a>
+    </div>
+    <div class="info-block">
+      <h2>Community</h2>
+      <p>Connect with 50,000+ padel enthusiasts. Share experiences, find partners, and grow together.</p>
+      <a href="community.html" class="btn">Join Community</a>
+    </div>
+    <div class="info-block">
+      <h2>Live Events</h2>
+      <p>Stay updated with live tournaments, scores, and events happening in the padel world right now.</p>
+      <a href="events.html" class="btn">View Events</a>
+    </div>
+    <div class="info-block">
+      <h2>Padel Media</h2>
+      <p>Access exclusive videos, interviews, and highlights from the world of padel.</p>
+      <a href="media.html" class="btn">Explore Media</a>
+    </div>
+  </section>
+
+  <!-- Fixed Bottom Navigation -->
   <nav class="bottom-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="learn.html">Learn</a>
-    <a href="equipment.html">Gear</a>
-    <a href="community.html">Community</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="equipment.html">Equipment</a></li>
+      <li><a href="travel.html">Travel</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul>
   </nav>
 </body>
 </html>
