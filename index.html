@@ -4,51 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>World Padel Zone</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/images/logo_wpz.png" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero__inner">
-      <img src="assets/images/logo_wpz.png" alt="World Padel Zone Logo" class="logo" />
-      <h1>Master Padel, Connect Globally</h1>
-      <p>Join the world's fastest-growing racket sport community. From beginner basics to professional mastery—learn, play, and compete with players worldwide.</p>
-      <nav class="level-nav">
-        <a href="beginners.html">Start Learning</a>
-        <a href="play.html">Play Now</a>
-        <a href="community.html">Join Community</a>
-      </nav>
-    </div>
+  <!-- Header (logo only on mobile; you can hide on desktop if you prefer) -->
+  <header class="py-4 px-6 bg-dark-900 flex justify-center md:justify-start">
+    <img src="assets/images/logo_wpz.png" alt="WPZ Logo" class="h-10" />
   </header>
 
-  <!-- Levels Section -->
+  <!-- Hero -->
+  <section class="hero">
+    <img
+      src="assets/images/worldpadelzonehero.jpg"
+      alt="Padel Court Hero"
+      class="hero__bg"
+    />
+    <div class="hero__overlay"></div>
+    <div class="hero__inner">
+      <h1 class="mb-4">
+        Master Padel,<br />
+        Connect Globally
+      </h1>
+      <p class="mb-6">
+        Join the world's fastest-growing racket sport community. From beginner basics
+        to professional mastery—learn, play, and compete with 25 million players
+        worldwide.
+      </p>
+      <nav class="level-nav">
+        <a href="beginner.html">Complete Beginner</a>
+        <a href="intermediate.html">Developing Player</a>
+        <a href="advanced.html">Competitive Player</a>
+        <a href="expert.html">Expert</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Level Cards Grid -->
   <section class="levels">
     <div class="levels__grid">
-      <a href="beginners.html" class="level-card">
-        <img src="assets/images/worldpadelzone00.jpg" alt="Complete Beginner">
+      <a href="beginner.html" class="level-card">
+        <img
+          src="assets/images/worldpadelzone01.jpg"
+          alt="Complete Beginner"
+        />
         <h3>Complete Beginner</h3>
+        <small>Never played padel</small>
       </a>
-      <a href="beginners.html#intermediate" class="level-card">
-        <img src="assets/images/worldpadelzone03.jpg" alt="Developing Player">
+      <a href="intermediate.html" class="level-card">
+        <img
+          src="assets/images/worldpadelzone02.jpg"
+          alt="Developing Player"
+        />
         <h3>Developing Player</h3>
+        <small>Know basics, want to improve</small>
       </a>
-      <a href="beginners.html#advanced" class="level-card">
-        <img src="assets/images/worldpadelzone12.jpg" alt="Competitive Player">
+      <a href="advanced.html" class="level-card">
+        <img
+          src="assets/images/worldpadelzone03.jpg"
+          alt="Competitive Player"
+        />
         <h3>Competitive Player</h3>
+        <small>Tournament ready</small>
+      </a>
+      <a href="expert.html" class="level-card">
+        <img
+          src="assets/images/worldpadelzone05.jpg"
+          alt="Expert Player"
+        />
+        <h3>Expert</h3>
+        <small>Pro-level mastery</small>
       </a>
     </div>
   </section>
 
-  <!-- Bottom navigation (mobile only) -->
-  <nav class="bottom-nav">
-    <a href="index.html">Home</a>
+  <!-- Bottom Nav (mobile only) -->
+  <nav class="bottom-nav md:hidden">
+    <a href="index.html" class="active">Home</a>
     <a href="play.html">Play</a>
     <a href="media.html">Media</a>
     <a href="learn.html">Learn</a>
     <a href="community.html">Community</a>
   </nav>
-
-  <script src="js/app.js"></script>
 </body>
 </html>
