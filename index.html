@@ -6,26 +6,16 @@
   <title>World Padel Zone</title>
   <link rel="icon" href="assets/images/logo_wpz.png">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    /* Mobile-first logo sizing */
-    .logo {
-      max-width: 120px;
-      width: auto;
-    }
-    @media (min-width: 768px) {
-      .logo {
-        max-width: 200px;
-      }
-    }
-  </style>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
-    <img src="assets/images/logo_wpz.png" alt="WPZ Logo" class="logo">
+    <a href="index.html"><img src="assets/images/logo_wpz.png" alt="WPZ Logo" class="logo"></a>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero hero--full">
-    <img src="assets/images/worldpadelzonehero.jpg" alt="Padel Hero" class="hero__bg">
+    <img src="assets/images/worldpadelzonehero.jpg" alt="Hero" class="hero__bg">
     <div class="hero__overlay"></div>
     <div class="hero__txt">
       <h1>Master Padel,<br>Connect Globally</h1>
@@ -33,77 +23,91 @@
     </div>
   </section>
 
+  <!-- Levels Grid -->
   <section class="grid-cards">
     <a href="beginner.html" class="card">
-      <img src="assets/images/worldpadelzone01.jpg" alt="Beginner">
+      <img src="assets/images/worldpadelzone01.jpg" alt="Beginner" />
       <h2>Complete Beginner</h2>
       <small>Never played padel</small>
     </a>
     <a href="intermediate.html" class="card">
-      <img src="assets/images/worldpadelzone02.jpg" alt="Developing">
+      <img src="assets/images/worldpadelzone12.jpg" alt="Developing" />
       <h2>Developing Player</h2>
       <small>Know basics, want to improve</small>
     </a>
     <a href="advanced.html" class="card">
-      <img src="assets/images/worldpadelzone03.jpg" alt="Competitive">
+      <img src="assets/images/worldpadelzone03.jpg" alt="Competitive" />
       <h2>Competitive Player</h2>
       <small>Tournament ready</small>
     </a>
     <a href="expert.html" class="card">
-      <img src="assets/images/worldpadelzone05.jpg" alt="Expert">
+      <img src="assets/images/worldpadelzone00.jpg" alt="Expert" />
       <h2>Expert</h2>
       <small>Pro-level mastery</small>
     </a>
   </section>
 
-  <!-- Additional Info Sections -->
-  <section class="info-sections">
-    <div class="info-block">
-      <h2>Explore World Padel Zone</h2>
-      <p>Discover everything you need to elevate your padel game and connect with the global community.</p>
+  <!-- Info Sections -->
+  <section class="sections-grid">
+    <div class="info-card">
+      <img src="assets/images/learn.jpg" alt="Learn Padel">
+      <div class="info-content">
+        <h3>Learn Padel</h3>
+        <p>Master the fundamentals with our comprehensive learning system. From beginner basics to advanced techniques.</p>
+        <a class="btn" href="beginner.html">Start Learning</a>
+      </div>
     </div>
-    <div class="info-block">
-      <h2>Learn Padel</h2>
-      <p>Master the fundamentals with our comprehensive learning system. From beginner basics to advanced techniques.</p>
-      <a href="beginner.html" class="btn">Start Learning</a>
+    <div class="info-card">
+      <img src="assets/images/equipment.jpg" alt="Equipment Reviews">
+      <div class="info-content">
+        <h3>Equipment Reviews</h3>
+        <p>Find the perfect gear with our in-depth reviews and buying guides from padel experts worldwide.</p>
+        <a class="btn" href="equipment.html">Browse Reviews</a>
+      </div>
     </div>
-    <div class="info-block">
-      <h2>Equipment Reviews</h2>
-      <p>Find the perfect gear with our in-depth reviews and buying guides from padel experts worldwide.</p>
-      <a href="equipment.html" class="btn">Browse Reviews</a>
+    <div class="info-card">
+      <img src="assets/images/travel.jpg" alt="Travel Corner">
+      <div class="info-content">
+        <h3>Travel Corner</h3>
+        <p>Discover amazing padel destinations and book exclusive travel packages to play around the world.</p>
+        <a class="btn" href="travel.html">Explore Destinations</a>
+      </div>
     </div>
-    <div class="info-block">
-      <h2>Travel Corner</h2>
-      <p>Discover amazing padel destinations and book exclusive travel packages to play around the world.</p>
-      <a href="travel.html" class="btn">Explore Destinations</a>
+    <div class="info-card">
+      <img src="assets/images/community.jpg" alt="Community">
+      <div class="info-content">
+        <h3>Community</h3>
+        <p>Connect with 50,000+ padel enthusiasts. Share experiences, find partners, and grow together.</p>
+        <a class="btn" href="community.html">Join Community</a>
+      </div>
     </div>
-    <div class="info-block">
-      <h2>Community</h2>
-      <p>Connect with 50,000+ padel enthusiasts. Share experiences, find partners, and grow together.</p>
-      <a href="community.html" class="btn">Join Community</a>
+    <div class="info-card">
+      <img src="assets/images/events.jpg" alt="Live Events">
+      <div class="info-content">
+        <h3>Live Events</h3>
+        <p>Stay updated with live tournaments, scores, and events happening in the padel world right now.</p>
+        <a class="btn" href="events.html">View Events</a>
+      </div>
     </div>
-    <div class="info-block">
-      <h2>Live Events</h2>
-      <p>Stay updated with live tournaments, scores, and events happening in the padel world right now.</p>
-      <a href="events.html" class="btn">View Events</a>
-    </div>
-    <div class="info-block">
-      <h2>Padel Media</h2>
-      <p>Access exclusive videos, interviews, and highlights from the world of padel.</p>
-      <a href="media.html" class="btn">Explore Media</a>
+    <div class="info-card">
+      <img src="assets/images/media.jpg" alt="Padel Media">
+      <div class="info-content">
+        <h3>Padel Media</h3>
+        <p>Watch highlights, interviews, and exclusive padel content curated for clubs and fans.</p>
+        <a class="btn" href="media.html">Explore Media</a>
+      </div>
     </div>
   </section>
 
-  <!-- Fixed Bottom Navigation -->
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="learn.html">Learn</a></li>
-      <li><a href="equipment.html">Equipment</a></li>
-      <li><a href="travel.html">Travel</a></li>
-      <li><a href="community.html">Community</a></li>
-      <li><a href="events.html">Events</a></li>
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="beginner.html">Learn</a>
+    <a href="equipment.html">Gear</a>
+    <a href="travel.html">Travel</a>
+    <a href="community.html">Community</a>
+    <a href="events.html">Events</a>
+    <a href="media.html">Media</a>
   </nav>
 </body>
 </html>
