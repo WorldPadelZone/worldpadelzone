@@ -925,16 +925,49 @@
     </script>
 
     <!-- Navigation -->
-    <nav class="relative z-10 w-full px-6 py-4">
-        <div class="container flex justify-between items-center">
-            <div class="flex items-center gap-4">
-    <div class="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center overflow-hidden">
-        <img src="https://github.com/WorldPadelZone/worldpadelzone/tree/main/assets/images/logo_wpz.png" alt="World Padel Zone Logo" class="w-full h-full object-contain">
-    </div>
-    <span class="geist-font text-lg font-medium text-white">World Padel Zone</span>
-	</div>
-                <span class="geist-font text-lg font-medium text-white">World Padel Zone</span>
+<nav class="relative z-10 w-full px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center overflow-hidden p-1">
+                <img src="assets/images/logo_wpz.png" alt="World Padel Zone Logo" class="w-full h-full object-contain">
             </div>
+            <span class="geist-font text-lg font-medium text-white">World Padel Zone</span>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn glass-button px-3 py-2 rounded-lg md:hidden">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Desktop Navigation -->
+        <div class="nav-menu">
+            <a href="#learn" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Learn</a>
+            <a href="#destinations" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Travel</a>
+            <a href="#equipment" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Equipment</a>
+            <a href="#community" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Community</a>
+            <a href="#events" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Events</a>
+        </div>
+        
+        <button class="glass-button px-4 py-2 rounded-lg text-white text-sm font-medium inter-font hidden md:block">
+            Join Community
+        </button>
+    </div>
+</nav>
+        
+        <!-- Desktop Navigation -->
+        <div class="nav-menu">
+            <a href="#learn" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Learn</a>
+            <a href="#destinations" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Travel</a>
+            <a href="#equipment" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Equipment</a>
+            <a href="#community" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Community</a>
+            <a href="#events" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Events</a>
+        </div>
+        
+        <button class="glass-button px-4 py-2 rounded-lg text-white text-sm font-medium inter-font hidden md:block">
+            Join Community
+        </button>
+    </div>
+</nav>
             
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn btn btn-secondary btn-sm md:hidden">
