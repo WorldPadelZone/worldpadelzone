@@ -17,7 +17,7 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        opacity: 0.7; /* Increased from 0.5 to make images brighter */
+        opacity: 0.7; 
     }
     #background-carousel img {
         position: absolute;
@@ -64,7 +64,7 @@
     <img src="https://worldpadelzone.com/assets/images/5.jpg" alt="Enjoying a game of padel" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+5+Not+Found';">
   </div>
 
-  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-40 flex flex-col"> <!-- Changed overlay from bg-opacity-60 to 40 -->
+  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-40 flex flex-col"> 
     <div class="flex-grow">
     <!-- Navigation -->
     <nav class="relative z-20 px-6 py-6">
@@ -115,6 +115,46 @@
             </div>
         </div>
     </section>
+
+    <!-- Explore More Section -->
+    <section id="explore-more-section" class="relative z-10 px-6 py-24">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Discover More</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Dive deeper into the world of padel with our dedicated sections on gear, tactics, destinations, and more.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Equipment Card -->
+                <a href="#equipment" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Equipment</h3>
+                    <p class="text-sm text-gray-300">Find the perfect racket, shoes, and accessories for your game.</p>
+                </a>
+                <!-- Strategy Card -->
+                <a href="#strategy" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Strategy & Tips</h3>
+                    <p class="text-sm text-gray-300">Improve your tactics with pro advice and game-winning strategies.</p>
+                </a>
+                <!-- Destinations Card -->
+                <a href="#destinations" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Destinations</h3>
+                    <p class="text-sm text-gray-300">Explore the best padel courts and resorts around the world.</p>
+                </a>
+                <!-- News Card -->
+                <a href="#news" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl font-bold mb-2 text-cyan-300">News</h3>
+                    <p class="text-sm text-gray-300">Stay up-to-date with the latest from the professional padel tour.</p>
+                </a>
+                <!-- Media Card -->
+                <a href="#padel-media" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Padel Media</h3>
+                    <p class="text-sm text-gray-300">Resources and services for clubs to grow their presence.</p>
+                </a>
+                <!-- Calendar Card -->
+                <a href="#event-calendar" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Event Calendar</h3>
+                    <p class="text-sm text-gray-300">Find upcoming tournaments and events near you.</p>
+                </a>
+            </div>
+        </div>
+    </section>
     
     </div>
 
@@ -137,15 +177,11 @@
                 </div>
                 <div class="flex space-x-6">
                     <a href="https://www.instagram.com/worldpadelzone/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12.315 2c-4.04.05-5.85.22-6.73.52a4.43 4.43 0 00-1.6 1.6C3.7 5.03 3.5 6.84 3.5 10.88v2.24c0 4.04.22 5.85.52 6.73a4.43 4.43 0 001.6 1.6c.88.3 2.69.5 6.73.52h2.24c4.04 0 5.85-.22 6.73-.52a4.43 4.43 0 001.6-1.6c.3-.88.5-2.69.52-6.73v-2.24c0-4.04-.22-5.85-.52-6.73a4.43 4.43 0 00-1.6-1.6C18.16 2.22 16.35 2.05 12.315 2zM12 7.17a4.83 4.83 0 100 9.66 4.83 4.83 0 000-9.66zM12 15a3 3 0 110-6 3 3 0 010 6zm6.4-8.27a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z" clip-rule="evenodd" />
-                        </svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.04.05-5.85.22-6.73.52a4.43 4.43 0 00-1.6 1.6C3.7 5.03 3.5 6.84 3.5 10.88v2.24c0 4.04.22 5.85.52 6.73a4.43 4.43 0 001.6 1.6c.88.3 2.69.5 6.73.52h2.24c4.04 0 5.85-.22 6.73-.52a4.43 4.43 0 001.6-1.6c.3-.88.5-2.69.52-6.73v-2.24c0-4.04-.22-5.85-.52-6.73a4.43 4.43 0 00-1.6-1.6C18.16 2.22 16.35 2.05 12.315 2zM12 7.17a4.83 4.83 0 100 9.66 4.83 4.83 0 000-9.66zM12 15a3 3 0 110-6 3 3 0 010 6zm6.4-8.27a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z" clip-rule="evenodd" /></svg>
                         <span class="sr-only">Instagram</span>
                     </a>
                     <a href="https://www.facebook.com/worldpadelzone" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-                        </svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
                         <span class="sr-only">Facebook</span>
                     </a>
                 </div>
@@ -230,7 +266,7 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="p-4 text-gray-300 text-sm">
-                            ${module.content}
+                           <p>${module.content}</p>
                         </div>
                     </div>
                 </div>
