@@ -17,7 +17,7 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        opacity: 0.5;
+        opacity: 0.7; /* Increased from 0.5 to make images brighter */
     }
     #background-carousel img {
         position: absolute;
@@ -64,7 +64,7 @@
     <img src="https://worldpadelzone.com/assets/images/5.jpg" alt="Enjoying a game of padel" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+5+Not+Found';">
   </div>
 
-  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-60 flex flex-col">
+  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-40 flex flex-col"> <!-- Changed overlay from bg-opacity-60 to 40 -->
     <div class="flex-grow">
     <!-- Navigation -->
     <nav class="relative z-20 px-6 py-6">
@@ -80,7 +80,6 @@
           <a href="#" class="text-gray-300 hover:text-white transition-colors">Travel</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">News</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">Media</a>
-          <a href="#coach-section" class="text-gray-300 hover:text-white transition-colors">AI Coach</a>
         </div>
         <div class="flex items-center space-x-4">
           <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors">Log In</a>
@@ -117,36 +116,6 @@
         </div>
     </section>
     
-    <!-- AI Padel Coach Section -->
-    <section id="coach-section" class="relative z-10 px-6 py-24">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">✨ AI Padel Coach</h2>
-            <p class="text-gray-400 mb-8">Have a question about rules, technique, or strategy? Ask our AI Padel Coach!</p>
-            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-                <input id="coach-question" type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white" placeholder="e.g., How do I hit a proper bandeja?">
-                <button id="ask-coach-btn" class="px-6 py-3 bg-cyan-500 text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-lg flex items-center justify-center">
-                    <span id="ask-coach-text">Ask Coach</span>
-                    <svg id="coach-loading" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tournament Name Generator Section -->
-    <section id="tournament-section" class="relative z-10 px-6 py-24 bg-gray-900 bg-opacity-80">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">✨ Tournament Name Generator</h2>
-            <p class="text-gray-400 mb-8">Need a catchy name for your next padel tournament? Let our AI help you out!</p>
-            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-                <input id="tournament-theme" type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white" placeholder="e.g., Summer, Beach, Beginners">
-                <button id="generate-name-btn" class="px-6 py-3 bg-cyan-500 text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-lg flex items-center justify-center whitespace-nowrap">
-                    <span id="generate-name-text">Generate Names</span>
-                     <svg id="name-loading" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                </button>
-            </div>
-            <div id="tournament-names-output" class="mt-8 text-left max-w-xl mx-auto"></div>
-        </div>
-    </section>
     </div>
 
     <!-- Footer -->
@@ -187,18 +156,6 @@
         </div>
     </footer>
   </div>
-
-  <!-- AI Coach Response Modal -->
-  <div id="coach-modal" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden items-center justify-center p-4">
-      <div class="bg-gray-800 rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col">
-          <div class="flex justify-between items-center p-4 border-b border-gray-700">
-              <h3 class="text-lg font-semibold text-white">✨ AI Padel Coach Says...</h3>
-              <button id="close-modal-btn" class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
-          </div>
-          <div id="coach-response" class="p-6 text-gray-300 overflow-y-auto no-scrollbar"></div>
-      </div>
-  </div>
-
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -271,8 +228,10 @@
                         <span class="font-semibold text-cyan-400">${module.title}</span>
                         <svg class="chevron-icon w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="collapsible-content px-4 pb-4 text-gray-300">
-                        <p>${module.content}</p>
+                    <div class="collapsible-content">
+                        <div class="p-4 text-gray-300 text-sm">
+                            ${module.content}
+                        </div>
                     </div>
                 </div>
             `;
@@ -336,151 +295,6 @@
             }
         }
     });
-
-
-      // --- Gemini API Integration ---
-
-      // AI Padel Coach Elements
-      const coachQuestionInput = document.getElementById('coach-question');
-      const askCoachBtn = document.getElementById('ask-coach-btn');
-      const coachModal = document.getElementById('coach-modal');
-      const coachResponseEl = document.getElementById('coach-response');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-      const askCoachText = document.getElementById('ask-coach-text');
-      const coachLoading = document.getElementById('coach-loading');
-
-      // Tournament Name Generator Elements
-      const tournamentThemeInput = document.getElementById('tournament-theme');
-      const generateNameBtn = document.getElementById('generate-name-btn');
-      const tournamentNamesOutput = document.getElementById('tournament-names-output');
-      const generateNameText = document.getElementById('generate-name-text');
-      const nameLoading = document.getElementById('name-loading');
-      
-      const apiKey = ""; // The API key will be provided by the environment
-
-      function showLoading(buttonTextEl, loadingSpinnerEl, buttonEl) {
-        buttonTextEl.classList.add('hidden');
-        loadingSpinnerEl.classList.remove('hidden');
-        buttonEl.disabled = true;
-      }
-
-      function hideLoading(buttonTextEl, loadingSpinnerEl, buttonEl) {
-        buttonTextEl.classList.remove('hidden');
-        loadingSpinnerEl.classList.add('hidden');
-        buttonEl.disabled = false;
-      }
-
-
-      // --- AI Coach Logic ---
-      askCoachBtn.addEventListener('click', async () => {
-        const question = coachQuestionInput.value.trim();
-        if (!question) {
-          coachResponseEl.innerHTML = '<p class="text-yellow-400">Please enter a question for the coach.</p>';
-          coachModal.classList.remove('hidden');
-          coachModal.classList.add('flex');
-          return;
-        }
-
-        showLoading(askCoachText, coachLoading, askCoachBtn);
-        
-        const prompt = `You are a friendly and encouraging AI Padel Coach. A user has asked the following question: "${question}". Provide a clear, helpful, and well-structured answer. Use markdown for formatting like headings, lists, and bold text.`;
-
-        try {
-          let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-          const payload = { contents: chatHistory };
-          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-          
-          const response = await fetch(apiUrl, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-          });
-
-          if (!response.ok) {
-              throw new Error(`API request failed with status ${response.status}`);
-          }
-
-          const result = await response.json();
-          
-          if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
-            let htmlResponse = result.candidates[0].content.parts[0].text;
-            htmlResponse = htmlResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            htmlResponse = htmlResponse.replace(/^### (.*$)/gim, '<h3 class="text-xl font-semibold mb-3 mt-4">$1</h3>');
-            htmlResponse = htmlResponse.replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mb-4 mt-5">$1</h2>');
-            htmlResponse = htmlResponse.replace(/^\* (.*$)/gim, '<li>$1</li>');
-            htmlResponse = htmlResponse.replace(/<\/li>\s*<li>/g, '</li><li>');
-            htmlResponse = htmlResponse.replace(/(<li>.*<\/li>)/gs, '<ul class="list-disc list-inside space-y-2 mt-2 mb-3">$1</ul>');
-            htmlResponse = htmlResponse.replace(/\n/g, '<br>');
-
-            coachResponseEl.innerHTML = htmlResponse;
-          } else {
-              coachResponseEl.textContent = 'Sorry, I could not find an answer. Please try again.';
-          }
-        } catch (error) {
-          console.error("Error fetching from Gemini API:", error);
-          coachResponseEl.textContent = 'There was an error connecting to the AI Coach. Please check your connection and try again later.';
-        } finally {
-            coachModal.classList.remove('hidden');
-            coachModal.classList.add('flex');
-            hideLoading(askCoachText, coachLoading, askCoachBtn);
-        }
-      });
-      
-      closeModalBtn.addEventListener('click', () => {
-        coachModal.classList.add('hidden');
-        coachModal.classList.remove('flex');
-      });
-
-      // --- Tournament Name Generator Logic ---
-      generateNameBtn.addEventListener('click', async () => {
-          const theme = tournamentThemeInput.value.trim();
-          if (!theme) {
-              tournamentNamesOutput.innerHTML = '<p class="text-yellow-400">Please enter a theme to generate names.</p>';
-              return;
-          }
-
-          showLoading(generateNameText, nameLoading, generateNameBtn);
-          tournamentNamesOutput.innerHTML = '';
-
-          const prompt = `Generate a list of 10 creative and fun tournament names for a padel competition with the theme: "${theme}". Provide the names as a simple numbered list, without any introductory text.`;
-
-          try {
-              let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-              const payload = { contents: chatHistory };
-              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-              const response = await fetch(apiUrl, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(payload)
-              });
-              
-              if (!response.ok) {
-                throw new Error(`API request failed with status ${response.status}`);
-              }
-
-              const result = await response.json();
-
-              if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
-                  const namesText = result.candidates[0].content.parts[0].text;
-                  const namesArray = namesText.split('\n').filter(name => name.trim() !== '');
-                  
-                  let htmlOutput = '<h4 class="font-semibold text-lg mb-3 text-white">Here are some ideas:</h4><ul class="space-y-2">';
-                  namesArray.forEach(name => {
-                      htmlOutput += `<li class="text-gray-300 bg-gray-800 p-3 rounded-lg flex items-center"><span class="text-cyan-400 mr-3">${name.split('.')[0]}.</span>${name.split('.').slice(1).join('.').trim()}</li>`;
-                  });
-                  htmlOutput += '</ul>';
-                  tournamentNamesOutput.innerHTML = htmlOutput;
-              } else {
-                  tournamentNamesOutput.innerHTML = '<p class="text-red-400">Sorry, could not generate names. Please try a different theme.</p>';
-              }
-          } catch (error) {
-              console.error("Error fetching from Gemini API:", error);
-              tournamentNamesOutput.innerHTML = '<p class="text-red-400">There was an error connecting to the generator. Please try again later.</p>';
-          } finally {
-              hideLoading(generateNameText, nameLoading, generateNameBtn);
-          }
-      });
 
     });
   </script>
