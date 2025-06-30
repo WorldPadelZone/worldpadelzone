@@ -1,1267 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="World Padel Zone – The digital headquarters for the global padel community. Connect, learn, and elevate your game with players worldwide.">
-    <meta name="theme-color" content="#0c7ff2">
-    <title>World Padel Zone - Global Padel Community Hub</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏓</text></svg>">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            /* Modern Color System */
-            --primary-50: #eff6ff;
-            --primary-100: #dbeafe;
-            --primary-200: #bfdbfe;
-            --primary-300: #93c5fd;
-            --primary-400: #60a5fa;
-            --primary-500: #0c7ff2;
-            --primary-600: #2563eb;
-            --primary-700: #1d4ed8;
-            --primary-800: #1e40af;
-            --primary-900: #1e3a8a;
-            
-            /* Neutral System */
-            --neutral-50: #fafafa;
-            --neutral-100: #f5f5f5;
-            --neutral-200: #e5e5e5;
-            --neutral-300: #d4d4d4;
-            --neutral-400: #a3a3a3;
-            --neutral-500: #737373;
-            --neutral-600: #525252;
-            --neutral-700: #404040;
-            --neutral-800: #262626;
-            --neutral-900: #171717;
-            --neutral-950: #0a0a0a;
-            
-            /* Semantic Colors */
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --info: #06b6d4;
-            
-            /* Glass System */
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-hover-bg: rgba(255, 255, 255, 0.08);
-            --glass-hover-border: rgba(255, 255, 255, 0.2);
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            
-            /* Blur System */
-            --blur-sm: 4px;
-            --blur-md: 8px;
-            --blur-lg: 16px;
-            --blur-xl: 24px;
-            --blur-2xl: 40px;
-            
-            /* Animation Timing */
-            --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-            --ease-out: cubic-bezier(0, 0, 0.2, 1);
-            --ease-in: cubic-bezier(0.4, 0, 1, 1);
-            
-            /* Typography Scale */
-            --text-xs: 0.75rem;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.25rem;
-            --text-2xl: 1.5rem;
-            --text-3xl: 1.875rem;
-            --text-4xl: 2.25rem;
-            --text-5xl: 3rem;
-            --text-6xl: 3.75rem;
-            --text-7xl: 4.5rem;
-            --text-8xl: 6rem;
-            --text-9xl: 8rem;
-        }
-        
-        body { 
-            margin: 0; 
-            overflow-x: hidden; 
-            background: var(--neutral-950); 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: white;
-            font-size: var(--text-base);
-            line-height: 1.5;
-        }
-        
-        canvas { 
-            display: block; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            z-index: 0; 
-        }
-        
-        /* ===== MODERN BUTTON SYSTEM ===== */
-        .btn {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s var(--ease-out);
-            outline: none;
-            overflow: hidden;
-            user-select: none;
-            white-space: nowrap;
-        }
-        
-        .btn:focus-visible {
-            outline: 2px solid var(--primary-500);
-            outline-offset: 2px;
-        }
-        
-        /* Button Sizes */
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: var(--text-sm);
-            border-radius: 0.5rem;
-            min-height: 2rem;
-        }
-        
-        .btn-md {
-            padding: 0.75rem 1.5rem;
-            font-size: var(--text-base);
-            border-radius: 0.75rem;
-            min-height: 2.75rem;
-        }
-        
-        .btn-lg {
-            padding: 1rem 2rem;
-            font-size: var(--text-lg);
-            border-radius: 1rem;
-            min-height: 3.5rem;
-        }
-        
-        .btn-xl {
-            padding: 1.25rem 2.5rem;
-            font-size: var(--text-xl);
-            border-radius: 1.25rem;
-            min-height: 4rem;
-        }
-        
-        /* Primary Button - Gradient with Glow */
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 
-                var(--shadow-lg),
-                0 0 0 1px rgba(12, 127, 242, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-700) 100%);
-            opacity: 0;
-            transition: opacity 0.2s var(--ease-out);
-            border-radius: inherit;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 25px 50px -12px rgba(12, 127, 242, 0.25),
-                0 0 0 1px rgba(12, 127, 242, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-primary:active {
-            transform: translateY(0);
-            transition-duration: 0.1s;
-        }
-        
-        /* Secondary Button - Glass Effect */
-        .btn-secondary {
-            background: var(--glass-bg);
-            color: white;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(var(--blur-lg));
-            box-shadow: var(--shadow-md);
-        }
-        
-        .btn-secondary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--glass-hover-bg);
-            opacity: 0;
-            transition: opacity 0.2s var(--ease-out);
-            border-radius: inherit;
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--glass-hover-border);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .btn-secondary:hover::before {
-            opacity: 1;
-        }
-        
-        /* Outlined Button */
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 1.5px solid var(--glass-border);
-            backdrop-filter: blur(var(--blur-sm));
-        }
-        
-        .btn-outline:hover {
-            background: var(--glass-bg);
-            border-color: var(--primary-500);
-            color: var(--primary-400);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Ghost Button */
-        .btn-ghost {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.8);
-            border: none;
-        }
-        
-        .btn-ghost:hover {
-            background: var(--glass-bg);
-            color: white;
-            transform: translateY(-1px);
-        }
-        
-        /* Button with Icon */
-        .btn-icon {
-            gap: 0.75rem;
-        }
-        
-        .btn-icon i {
-            font-size: 0.875em;
-            transition: transform 0.2s var(--ease-out);
-        }
-        
-        .btn-icon:hover i {
-            transform: translateX(2px);
-        }
-        
-        /* Floating Action Button */
-        .btn-fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            padding: 0;
-            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow-2xl);
-            z-index: 1000;
-        }
-        
-        .btn-fab:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 32px 64px -12px rgba(12, 127, 242, 0.4);
-        }
-        
-        /* Button Loading State */
-        .btn-loading {
-            position: relative;
-            color: transparent;
-            pointer-events: none;
-        }
-        
-        .btn-loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 1rem;
-            height: 1rem;
-            margin: -0.5rem 0 0 -0.5rem;
-            border: 2px solid transparent;
-            border-top-color: currentColor;
-            border-radius: 50%;
-            animation: btn-spin 0.8s linear infinite;
-        }
-        
-        @keyframes btn-spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Button Group */
-        .btn-group {
-            display: inline-flex;
-            gap: 0.75rem;
-        }
-        
-        .btn-group-connected {
-            gap: 0;
-        }
-        
-        .btn-group-connected .btn:not(:first-child) {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            margin-left: -1px;
-        }
-        
-        .btn-group-connected .btn:not(:last-child) {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-        
-        /* ===== ENHANCED GLASS SYSTEM ===== */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--blur-xl));
-            border: 1px solid var(--glass-border);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s var(--ease-out);
-        }
-        
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            padding: 1px;
-            background: linear-gradient(135deg, 
-                rgba(12, 127, 242, 0.2) 0%, 
-                rgba(59, 130, 246, 0.2) 25%, 
-                rgba(139, 92, 246, 0.2) 75%, 
-                rgba(236, 72, 153, 0.2) 100%
-            );
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: subtract;
-            -webkit-mask-composite: xor;
-            opacity: 0;
-            transition: opacity 0.3s var(--ease-out);
-        }
-        
-        .glass-card:hover {
-            background: var(--glass-hover-bg);
-            border-color: var(--glass-hover-border);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-2xl);
-        }
-        
-        .glass-card:hover::before {
-            opacity: 1;
-        }
-        
-        /* ===== TYPOGRAPHY SYSTEM ===== */
-        .geist-font { 
-            font-family: 'Geist', sans-serif; 
-            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-        }
-        
-        .inter-font { 
-            font-family: 'Inter', sans-serif;
-            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, 
-                var(--primary-400) 0%, 
-                var(--primary-300) 25%, 
-                var(--primary-500) 75%, 
-                #6366f1 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* ===== ENHANCED ANIMATIONS ===== */
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.8s var(--ease-out) forwards;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .slide-in-right {
-            animation: slideInRight 0.6s var(--ease-out) forwards;
-        }
-        
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        /* ===== ENHANCED LEVEL CARDS ===== */
-        .level-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--blur-xl));
-            border: 1px solid var(--glass-border);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            transition: all 0.4s var(--ease-out);
-            text-decoration: none;
-            color: white;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .level-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--primary-300), var(--primary-600));
-            opacity: 0;
-            transition: all 0.3s var(--ease-out);
-        }
-        
-        .level-card:hover {
-            background: var(--glass-hover-bg);
-            border-color: rgba(12, 127, 242, 0.4);
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 
-                var(--shadow-2xl),
-                0 0 0 1px rgba(12, 127, 242, 0.1),
-                0 0 60px rgba(12, 127, 242, 0.15);
-        }
-        
-        .level-card:hover::before {
-            opacity: 1;
-        }
-        
-        .level-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .level-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-            border-radius: inherit;
-        }
-        
-        .beginner-icon {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
-            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
-        }
-        
-        .intermediate-icon {
-            background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);
-            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3);
-        }
-        
-        .advanced-icon {
-            background: linear-gradient(135deg, var(--error) 0%, #991b1b 100%);
-            box-shadow: 0 8px 32px rgba(239, 68, 68, 0.3);
-        }
-        
-        .expert-icon {
-            background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
-            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.3);
-        }
-        
-        .skill-badge {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(var(--blur-md));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.9);
-            font-size: var(--text-sm);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            display: inline-block;
-        }
-        
-        /* ===== ENHANCED INFO CARDS ===== */
-        .info-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--blur-xl));
-            border: 1px solid var(--glass-border);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            transition: all 0.4s var(--ease-out);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-card:hover {
-            background: var(--glass-hover-bg);
-            border-color: var(--glass-hover-border);
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
-        }
-        
-        .info-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 32px rgba(12, 127, 242, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
-            border-radius: inherit;
-        }
-        
-        .info-icon i {
-            font-size: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* ===== DIVIDER ENHANCEMENT ===== */
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, 
-                transparent, 
-                rgba(255, 255, 255, 0.1), 
-                rgba(12, 127, 242, 0.2),
-                rgba(255, 255, 255, 0.1), 
-                transparent
-            );
-            position: relative;
-        }
-        
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 6px;
-            height: 6px;
-            background: var(--primary-500);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 20px rgba(12, 127, 242, 0.5);
-        }
-        
-        /* ===== RESPONSIVE UTILITIES ===== */
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        .grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-        
-        .grid-1 { grid-template-columns: 1fr; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
-        
-        /* ===== MOBILE RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            :root {
-                --text-4xl: 2rem;
-                --text-5xl: 2.5rem;
-                --text-6xl: 3rem;
-                --text-7xl: 3.5rem;
-            }
-            
-            .btn-xl {
-                padding: 1rem 2rem;
-                font-size: var(--text-lg);
-                min-height: 3.5rem;
-            }
-            
-            .grid-2,
-            .grid-3,
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-            
-            .level-card,
-            .info-card {
-                padding: 1.5rem;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn-group .btn {
-                width: 100%;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .md\:grid-2 { grid-template-columns: repeat(2, 1fr); }
-            .md\:grid-3 { grid-template-columns: repeat(3, 1fr); }
-            .md\:grid-4 { grid-template-columns: repeat(4, 1fr); }
-            
-            .md\:btn-group-row {
-                flex-direction: row;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .lg\:grid-3 { grid-template-columns: repeat(3, 1fr); }
-            .lg\:grid-4 { grid-template-columns: repeat(4, 1fr); }
-        }
-        
-        /* ===== NAVIGATION STYLES ===== */
-        .nav-menu {
-            display: none;
-        }
-        
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(var(--blur-xl));
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .nav-menu a {
-            padding: 0.75rem;
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            transition: color 0.3s var(--ease-out);
-            border-radius: 0.5rem;
-        }
-        
-        .nav-menu a:hover {
-            color: var(--primary-400);
-            background: var(--glass-bg);
-        }
-        
-        @media (min-width: 768px) {
-            .nav-menu {
-                display: flex !important;
-                flex-direction: row;
-                position: static;
-                background: none;
-                border: none;
-                padding: 0;
-                margin: 0;
-            }
-            
-            .nav-menu a {
-                padding: 0;
-                margin: 0 1rem;
-            }
-            
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-        
-        /* ===== FOOTER NAV ===== */
-        .footer-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(var(--blur-xl));
-            border-top: 1px solid var(--glass-border);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-around;
-            z-index: 1000;
-        }
-        
-        .footer-nav a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: var(--text-xs);
-            text-align: center;
-            transition: all 0.3s var(--ease-out);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-        }
-        
-        .footer-nav a:hover {
-            color: var(--primary-400);
-            background: var(--glass-bg);
-            transform: translateY(-2px);
-        }
-        
-        @media (min-width: 768px) {
-            .footer-nav {
-                display: none;
-            }
-        }
-        
-        /* ===== UTILITY CLASSES ===== */
-        .relative { position: relative; }
-        .fixed { position: fixed; }
-        .absolute { position: absolute; }
-        .z-10 { z-index: 10; }
-        .z-50 { z-index: 50; }
-        .w-full { width: 100%; }
-        .h-full { height: 100%; }
-        .min-h-screen { min-height: 100vh; }
-        .flex { display: flex; }
-        .inline-flex { display: inline-flex; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .justify-between { justify-content: space-between; }
-        .flex-col { flex-direction: column; }
-        .gap-4 { gap: 1rem; }
-        .gap-6 { gap: 1.5rem; }
-        .gap-8 { gap: 2rem; }
-        .p-4 { padding: 1rem; }
-        .p-6 { padding: 1.5rem; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-8 { margin-bottom: 2rem; }
-        .mb-16 { margin-bottom: 4rem; }
-        .text-center { text-align: center; }
-        .text-white { color: white; }
-        .text-sm { font-size: var(--text-sm); }
-        .text-lg { font-size: var(--text-lg); }
-        .text-xl { font-size: var(--text-xl); }
-        .text-3xl { font-size: var(--text-3xl); }
-        .text-4xl { font-size: var(--text-4xl); }
-        .text-6xl { font-size: var(--text-6xl); }
-        .text-7xl { font-size: var(--text-7xl); }
-        .font-light { font-weight: 300; }
-        .font-medium { font-weight: 500; }
-        .font-bold { font-weight: 700; }
-        .leading-tight { line-height: 1.25; }
-        .leading-relaxed { line-height: 1.625; }
-        .tracking-tight { letter-spacing: -0.025em; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .rounded-xl { border-radius: 0.75rem; }
-        .overflow-hidden { overflow: hidden; }
-        .transition-all { transition: all 0.3s var(--ease-out); }
-        .cursor-pointer { cursor: pointer; }
-        .select-none { user-select: none; }
-        
-        @media (min-width: 640px) {
-            .sm\:flex { display: flex; }
-            .sm\:text-xl { font-size: var(--text-xl); }
-        }
-        
-        @media (min-width: 768px) {
-            .md\:text-6xl { font-size: var(--text-6xl); }
-            .md\:text-xl { font-size: var(--text-xl); }
-            .md\:block { display: block; }
-        }
-        
-        @media (min-width: 1024px) {
-            .lg\:text-7xl { font-size: var(--text-7xl); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Padel Zone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { 
+        font-family: 'Inter', sans-serif; 
+    }
+    #background-carousel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.5;
+    }
+    #background-carousel img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    #background-carousel img.active {
+        opacity: 1;
+    }
+    /* Hide scrollbar for clean look */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    /* Accordion animation styles */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-in-out;
+    }
+  </style>
 </head>
-<body>
-    <!-- Three.js Aurora Background -->
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+<body class="bg-gray-900 text-white">
 
-        const material = new THREE.ShaderMaterial({
-            uniforms: {
-                iTime: { value: 0 },
-                iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
-            },
-            vertexShader: `void main() { gl_Position = vec4(position, 1.0); }`,
-            fragmentShader: `
-                uniform float iTime;
-                uniform vec2 iResolution;
-                #define NUM_OCTAVES 3
-                float rand(vec2 n) { return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); }
-                float noise(vec2 p){
-                    vec2 ip = floor(p);
-                    vec2 u = fract(p);
-                    u = u*u*(3.0-2.0*u);
-                    float res = mix(mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
-                    return res*res;
-                }
-                float fbm(vec2 x) {
-                    float v = 0.0;
-                    float a = 0.3;
-                    vec2 shift = vec2(100);    
-                    mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
-                    for (int i = 0; i < NUM_OCTAVES; ++i) {
-                        v += a * noise(x);
-                        x = rot * x * 2.0 + shift;
-                        a *= 0.4;
-                    }
-                    return v;
-                }
-                void main() {
-                    vec2 shake = vec2(sin(iTime * 1.2) * 0.005, cos(iTime * 2.1) * 0.005);
-                    vec2 p = ((gl_FragCoord.xy + shake * iResolution.xy) - iResolution.xy * 0.5) / iResolution.y * mat2(6.0, -4.0, 4.0, 6.0);
-                    vec2 v;
-                    vec4 o = vec4(0.0);
-                    float f = 2.0 + fbm(p + vec2(iTime * 5.0, 0.0)) * 0.5; 
-                    for(float i = 0.0; i++ < 35.0;) {
-                        v = p + cos(i * i + (iTime + p.x * 0.08) * 0.025 + i * vec2(13.0, 11.0)) * 3.5 + vec2(sin(iTime * 3.0 + i) * 0.003, cos(iTime * 3.5 - i) * 0.003);
-                        float tailNoise = fbm(v + vec2(iTime * 0.5, i)) * 0.3 * (1.0 - (i / 35.0)); 
-                        vec4 auroraColors = vec4(0.05 + 0.2 * sin(i * 0.2 + iTime * 0.4), 0.2 + 0.4 * cos(i * 0.3 + iTime * 0.5), 0.6 + 0.3 * sin(i * 0.4 + iTime * 0.3), 1.0);
-                        vec4 currentContribution = auroraColors * exp(sin(i * i + iTime * 0.8)) / length(max(v, vec2(v.x * f * 0.015, v.y * 1.5)));
-                        float thinnessFactor = smoothstep(0.0, 1.0, i / 35.0) * 0.6; 
-                        o += currentContribution * (1.0 + tailNoise * 0.8) * thinnessFactor;
-                    }
-                    o = tanh(pow(o / 100.0, vec4(1.6)));
-                    gl_FragColor = o * 1.2;
-                }
-            `
-        });
+  <!-- Background Image Carousel -->
+  <div id="background-carousel">
+    <img src="https://worldpadelzone.com/assets/images/1.jpg" class="active" alt="Padel court background" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+1+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/2.jpg" alt="Padel players in action" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+2+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/3.jpg" alt="Padel match" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+3+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/4.jpg" alt="Padel racket and ball" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+4+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/5.jpg" alt="Enjoying a game of padel" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+5+Not+Found';">
+  </div>
 
-        const geometry = new THREE.PlaneGeometry(2, 2);
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        function animate() {
-            requestAnimationFrame(animate);
-            material.uniforms.iTime.value += 0.016;
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            material.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
-        });
-
-        animate();
-    </script>
-
+  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-60 flex flex-col">
+    <div class="flex-grow">
     <!-- Navigation -->
-    <nav class="relative z-10 w-full px-6 py-4">
-        <div class="container flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
-                    <span class="geist-font text-sm font-bold text-white">WPZ</span>
-                </div>
-                <span class="geist-font text-lg font-medium text-white">World Padel Zone</span>
-            </div>
-            
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn btn btn-secondary btn-sm md:hidden">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <!-- Desktop Navigation -->
-            <div class="nav-menu">
-                <a href="#learn" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Learn</a>
-                <a href="#destinations" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Travel</a>
-                <a href="#equipment" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Equipment</a>
-                <a href="#community" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Community</a>
-                <a href="#events" class="text-gray-300 hover:text-white transition-colors inter-font text-sm">Events</a>
-            </div>
-            
-            <button class="btn btn-primary btn-md hidden md:block">
-                Join Community
-            </button>
+    <nav class="relative z-20 px-6 py-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <svg class="w-8 h-8 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a5.25 5.25 0 016.372 4.863l-2.122 2.121a3 3 0 00-4.242-4.242L12 6.75z"/> <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a5.25 5.25 0 016.372 4.863l-2.122 2.121a3 3 0 00-4.242-4.242L12 6.75zM12 6.75v.007A4.48 4.48 0 0112 11.25a4.5 4.5 0 01-4.5 4.5 4.5 4.5 0 01-4.5-4.5A4.48 4.48 0 017.5 6.75v0M4.832 9.42a10.472 10.472 0 00-.818 4.83c0 5.798 4.702 10.5 10.5 10.5s10.5-4.702 10.5-10.5c0-1.999-.56-3.87-1.528-5.485"/>
+          </svg>
+          <span class="ml-3 text-xl font-semibold">World Padel Zone</span>
         </div>
+        <div class="hidden md:flex space-x-8 text-sm">
+          <a href="#level-up-section" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Travel</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">News</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Media</a>
+          <a href="#coach-section" class="text-gray-300 hover:text-white transition-colors">AI Coach</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors">Log In</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+        </div>
+      </div>
     </nav>
-
-    <div class="relative z-10 divider"></div>
 
     <!-- Hero Section -->
-    <div class="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-6 py-20">
-        <div class="container text-center">
-            <div class="mb-8 float-animation">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl leading-tight geist-font font-light text-white tracking-tight mb-4">
-                    Master Padel,
-                    <span class="gradient-text block tracking-tight">Connect Globally</span>
-                </h1>
-                <p class="text-lg md:text-xl max-w-3xl leading-relaxed inter-font font-light text-gray-300 mx-auto">
-                    Join the world's fastest-growing racket sport community. From beginner basics to professional mastery—learn, play, and compete with 25 million players worldwide.
-                </p>
-            </div>
+    <main class="relative z-10 px-6 pt-16 pb-24 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+          Explore the World of Padel
+        </h1>
+        <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+          From court-side tips to global destinations, gear reviews to club spotlights — World Padel Zone is your hub for all things padel.<br>
+          Play better. Travel farther. Live the padel lifestyle.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://playtomic.com/padel-courts" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-cyan-500 text-white text-base font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-lg">Book a Court</a>
+          <a href="#tournament-section" class="px-8 py-4 bg-gray-700 text-white text-base font-medium rounded-lg hover:bg-gray-600 transition-colors shadow-lg">Find a Tournament</a>
+        </div>
+      </div>
+    </main>
 
-            <div class="btn-group flex-col sm:flex-row justify-center items-center mb-16">
-                <button class="btn btn-primary btn-xl btn-icon">
-                    <i class="fas fa-rocket"></i>
-                    Start Your Journey
+    <!-- Level Up Section -->
+    <section id="level-up-section" class="relative z-10 px-6 py-24 bg-gray-900 bg-opacity-80">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">🚀 Level Up Your Game</h2>
+            <p class="text-gray-400 mb-8">Select your current level to get a personalized step-by-step course to improve your padel skills.</p>
+            <div id="padel-course-accordion" class="w-full text-left space-y-2">
+                <!-- Accordion items will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Padel Coach Section -->
+    <section id="coach-section" class="relative z-10 px-6 py-24">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">✨ AI Padel Coach</h2>
+            <p class="text-gray-400 mb-8">Have a question about rules, technique, or strategy? Ask our AI Padel Coach!</p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input id="coach-question" type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white" placeholder="e.g., How do I hit a proper bandeja?">
+                <button id="ask-coach-btn" class="px-6 py-3 bg-cyan-500 text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-lg flex items-center justify-center">
+                    <span id="ask-coach-text">Ask Coach</span>
+                    <svg id="coach-loading" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 </button>
-                <button class="btn btn-secondary btn-xl btn-icon">
-                    <i class="fas fa-globe"></i>
-                    Explore Destinations
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournament Name Generator Section -->
+    <section id="tournament-section" class="relative z-10 px-6 py-24 bg-gray-900 bg-opacity-80">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">✨ Tournament Name Generator</h2>
+            <p class="text-gray-400 mb-8">Need a catchy name for your next padel tournament? Let our AI help you out!</p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input id="tournament-theme" type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white" placeholder="e.g., Summer, Beach, Beginners">
+                <button id="generate-name-btn" class="px-6 py-3 bg-cyan-500 text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-lg flex items-center justify-center whitespace-nowrap">
+                    <span id="generate-name-text">Generate Names</span>
+                     <svg id="name-loading" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 </button>
             </div>
+            <div id="tournament-names-output" class="mt-8 text-left max-w-xl mx-auto"></div>
         </div>
+    </section>
     </div>
 
-    <!-- Level Cards Section -->
-    <div class="relative z-10 w-full px-6 py-20">
-        <div class="container">
-            <h2 class="text-3xl font-light text-center text-white mb-8 geist-font">Choose Your Level</h2>
-            <div class="grid grid-1 md:grid-2 lg:grid-4 gap-6">
-                <a href="#beginner" class="level-card">
-                    <div class="level-icon beginner-icon">1</div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Complete Beginner</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Never played padel before? Perfect! Start your journey with our comprehensive beginner program.</p>
-                    <div class="skill-badge">Start Here</div>
-                </a>
-
-                <a href="#intermediate" class="level-card">
-                    <div class="level-icon intermediate-icon">2</div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Developing Player</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Know the basics and ready to take your game to the next competitive level.</p>
-                    <div class="skill-badge">Upgrade Skills</div>
-                </a>
-
-                <a href="#advanced" class="level-card">
-                    <div class="level-icon advanced-icon">3</div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Competitive Player</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Tournament ready and looking to dominate the courts with advanced techniques.</p>
-                    <div class="skill-badge">Compete Now</div>
-                </a>
-
-                <a href="#expert" class="level-card">
-                    <div class="level-icon expert-icon">4</div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Expert</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Professional-level mastery and ready to coach others or compete at elite levels.</p>
-                    <div class="skill-badge">Join Pros</div>
-                </a>
+    <!-- Footer -->
+    <footer class="relative z-10 bg-gray-900 bg-opacity-95 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+                <div class="lg:col-span-1">
+                    <h3 class="text-lg font-semibold text-white mb-2">Subscribe to our Newsletter</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Get the latest news, travel deals, and padel tips straight to your inbox.</p>
+                    <form action="mailto:hello@worldpadelzone.com" method="post" enctype="text/plain" class="flex flex-col sm:flex-row gap-2 max-w-md">
+                        <input type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white text-sm">
+                        <button type="submit" class="px-5 py-2 bg-cyan-500 text-white font-medium rounded-md hover:bg-cyan-600 transition-colors whitespace-nowrap text-sm">Subscribe</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="relative z-10 divider mb-16"></div>
-
-    <!-- Info Cards Section -->
-    <div class="relative z-10 w-full px-6 py-20">
-        <div class="container">
-            <h2 class="text-3xl font-light text-center text-white mb-8 geist-font">Everything Padel</h2>
-            <div class="grid grid-1 md:grid-2 lg:grid-3 gap-6">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Learn Padel</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Master fundamentals with our comprehensive learning system. From beginner basics to advanced techniques with professional instructors.</p>
-                    <button class="btn btn-outline btn-sm">Start Learning</button>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="text-center md:text-left">
+                    <a href="mailto:hello@worldpadelzone.com" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">hello@worldpadelzone.com</a>
                 </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Equipment Reviews</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Find perfect gear with in-depth reviews and buying guides from padel experts worldwide. Updated weekly with latest releases.</p>
-                    <button class="btn btn-outline btn-sm">Browse Reviews</button>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/worldpadelzone/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c-4.04.05-5.85.22-6.73.52a4.43 4.43 0 00-1.6 1.6C3.7 5.03 3.5 6.84 3.5 10.88v2.24c0 4.04.22 5.85.52 6.73a4.43 4.43 0 001.6 1.6c.88.3 2.69.5 6.73.52h2.24c4.04 0 5.85-.22 6.73-.52a4.43 4.43 0 001.6-1.6c.3-.88.5-2.69.52-6.73v-2.24c0-4.04-.22-5.85-.52-6.73a4.43 4.43 0 00-1.6-1.6C18.16 2.22 16.35 2.05 12.315 2zM12 7.17a4.83 4.83 0 100 9.66 4.83 4.83 0 000-9.66zM12 15a3 3 0 110-6 3 3 0 010 6zm6.4-8.27a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="sr-only">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/worldpadelzone" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="sr-only">Facebook</span>
+                    </a>
                 </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Travel Corner</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Discover amazing padel destinations and book exclusive travel packages to the world's top 50 padel hotspots.</p>
-                    <button class="btn btn-outline btn-sm">Explore Destinations</button>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Community</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Connect with 50,000+ padel enthusiasts worldwide. Share experiences, find playing partners, and grow together.</p>
-                    <button class="btn btn-outline btn-sm">Join Community</button>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Live Events</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Stay updated with live tournaments, scores, and events happening in the padel world right now. Never miss a match.</p>
-                    <button class="btn btn-outline btn-sm">View Events</button>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white mb-2 geist-font">Padel Media</h3>
-                    <p class="text-gray-300 text-sm inter-font mb-4 leading-relaxed">Explore instructional videos, match highlights, and exclusive media content for clubs and players at every level.</p>
-                    <button class="btn btn-outline btn-sm">View Media</button>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-500">&copy; WorldPadelZone 2025</p>
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
+  </div>
 
-    <div class="relative z-10 divider mb-16"></div>
+  <!-- AI Coach Response Modal -->
+  <div id="coach-modal" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden items-center justify-center p-4">
+      <div class="bg-gray-800 rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col">
+          <div class="flex justify-between items-center p-4 border-b border-gray-700">
+              <h3 class="text-lg font-semibold text-white">✨ AI Padel Coach Says...</h3>
+              <button id="close-modal-btn" class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
+          </div>
+          <div id="coach-response" class="p-6 text-gray-300 overflow-y-auto no-scrollbar"></div>
+      </div>
+  </div>
 
-    <!-- Stats Section -->
-    <div class="relative z-10 w-full px-6 py-20">
-        <div class="container">
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-8 text-center">
-                <div>
-                    <div class="text-3xl md:text-4xl font-light text-white mb-1 geist-font tracking-tight">25M+</div>
-                    <div class="text-gray-400 text-sm inter-font">Global Players</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Background carousel logic
+      const carousel = document.getElementById('background-carousel');
+      const images = carousel.getElementsByTagName('img');
+      let currentIndex = 0;
+      const totalImages = images.length;
+      const intervalTime = 4000;
+
+      function changeImage() {
+        if (images.length > 0) {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            images[currentIndex].classList.add('active');
+        }
+      }
+      setInterval(changeImage, intervalTime);
+
+      // --- Course Accordion Logic ---
+      const courseLevels = [
+        {
+            id: "level-1",
+            title: "Brand new, never played but want to get started",
+            modules: [
+                { title: "Module 1: The Basics", content: "Understanding the court layout, the unique glass walls, scoring, and basic rules of play." },
+                { title: "Module 2: Your First Hit", content: "Learn the continental grip, ready position, and practice simple forehand and backhand shots." },
+                { title: "Module 3: Introduction to the Volley", content: "Step up to the net and learn the fundamentals of volleying the ball before it bounces." }
+            ]
+        },
+        {
+            id: "level-2",
+            title: "Beginner, played a few times and now want to improve",
+            modules: [
+                { title: "Module 1: Using the Walls", content: "Learn to let the ball hit the back and side walls and play it confidently on the return." },
+                { title: "Module 2: The Bandeja Shot", content: "Master the bandeja, a key defensive overhead shot to maintain your position at the net." },
+                { title: "Module 3: Basic Court Positioning", content: "Understand where to stand during serves, returns, and rallies to cover the court effectively with your partner." }
+            ]
+        },
+        {
+            id: "level-3",
+            title: "Advanced, played a lot, need more strategy and improvement",
+            modules: [
+                { title: "Module 1: The Vibora", content: "Add the aggressive vibora (viper) shot to your arsenal to put pressure on your opponents." },
+                { title: "Module 2: Advanced Net Play", content: "Learn how to read your opponents, poach at the net, and finish points with decisive volleys." },
+                { title: "Module 3: Defensive Lobs and Dropshots", content: "Master the art of the defensive lob to reset the point, and use the dropshot to catch opponents off guard." }
+            ]
+        },
+        {
+            id: "level-4",
+            title: "Expert, playing league and looking to level up even further",
+            modules: [
+                { title: "Module 1: Tactical Game Planning", content: "Analyze opponent weaknesses and develop game plans before and during a match." },
+                { title: "Module 2: Counter-Attacking Strategies", content: "Learn how to turn defense into offense with powerful counter-punches and wall-assisted attacks." },
+                { title: "Module 3: The Mental Game", content: "Develop mental toughness, focus, and effective communication with your partner for high-pressure situations." }
+            ]
+        }
+    ];
+
+    const accordionContainer = document.getElementById('padel-course-accordion');
+    courseLevels.forEach(level => {
+        const item = document.createElement('div');
+        item.className = 'accordion-item bg-gray-800 border border-gray-700 rounded-lg';
+        
+        let modulesHtml = '';
+        level.modules.forEach(module => {
+            modulesHtml += `
+                <div class="collapsible-item border-t border-gray-700">
+                    <button class="collapsible-trigger w-full flex items-center justify-between text-left p-4 hover:bg-gray-700/50">
+                        <span class="font-semibold text-cyan-400">${module.title}</span>
+                        <svg class="chevron-icon w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="collapsible-content px-4 pb-4 text-gray-300">
+                        <p>${module.content}</p>
+                    </div>
                 </div>
-                <div class="hidden sm:block w-px h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-light text-white mb-1 geist-font tracking-tight">50+</div>
-                    <div class="text-gray-400 text-sm inter-font">Countries</div>
-                </div>
-                <div class="hidden sm:block w-px h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-light text-white mb-1 geist-font tracking-tight">2K+</div>
-                    <div class="text-gray-400 text-sm inter-font">Courts Worldwide</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Action Button -->
-    <button class="btn-fab" title="Quick Access">
-        <i class="fas fa-plus"></i>
-    </button>
-
-    <!-- Mobile Footer Navigation -->
-    <nav class="footer-nav">
-        <a href="#home">
-            <i class="fas fa-home"></i><br>Home
-        </a>
-        <a href="#community">
-            <i class="fas fa-users"></i><br>Community
-        </a>
-        <a href="#destinations">
-            <i class="fas fa-map"></i><br>Travel
-        </a>
-        <a href="#learn">
-            <i class="fas fa-graduation-cap"></i><br>Learn
-        </a>
-        <a href="#equipment">
-            <i class="fas fa-shopping-cart"></i><br>Gear
-        </a>
-    </nav>
-
-    <script>
-        // Enhanced Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
+            `;
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        item.innerHTML = `
+            <button class="accordion-trigger w-full flex items-center justify-between text-left p-4">
+                <span class="text-base font-medium text-white">${level.title}</span>
+                <svg class="chevron-icon w-6 h-6 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                ${modulesHtml}
+            </div>
+        `;
+        accordionContainer.appendChild(item);
+    });
+    
+    accordionContainer.addEventListener('click', function(e) {
+        const accordionTrigger = e.target.closest('.accordion-trigger');
+        if (accordionTrigger) {
+            const item = accordionTrigger.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const icon = accordionTrigger.querySelector('.chevron-icon');
+            const isOpen = item.classList.contains('open');
+
+            // Close all other open items
+            document.querySelectorAll('.accordion-item.open').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.accordion-content').style.maxHeight = null;
+                    openItem.querySelector('.accordion-trigger .chevron-icon').classList.remove('rotate-180');
                 }
             });
-        });
 
-        // Enhanced Level card interactions with modern notifications
-        document.querySelectorAll('.level-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                const level = this.getAttribute('href').substring(1);
-                showToast(`${level.charAt(0).toUpperCase() + level.slice(1)} level selected! 🚀 Welcome to your padel journey.`, 'success');
-            });
-        });
-
-        // Enhanced Info card interactions
-        document.querySelectorAll('.info-card .btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const cardTitle = this.closest('.info-card').querySelector('h3').textContent;
-                
-                // Add loading state
-                this.classList.add('btn-loading');
-                
-                setTimeout(() => {
-                    this.classList.remove('btn-loading');
-                    showToast(`Exploring ${cardTitle}... 🎾 Coming soon!`, 'info');
-                }, 1000);
-            });
-        });
-
-        // Enhanced Toast notification system
-        function showToast(message, type = 'info') {
-            const toast = document.createElement('div');
-            const colors = {
-                success: 'rgba(16, 185, 129, 0.9)',
-                error: 'rgba(239, 68, 68, 0.9)',
-                warning: 'rgba(245, 158, 11, 0.9)',
-                info: 'rgba(12, 127, 242, 0.9)'
-            };
-            
-            toast.style.cssText = `
-                position: fixed;
-                top: 2rem;
-                right: 2rem;
-                background: ${colors[type]};
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 1rem;
-                z-index: 10000;
-                backdrop-filter: blur(16px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-                opacity: 0;
-                transform: translateY(-20px) scale(0.95);
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                font-family: 'Inter', sans-serif;
-                font-size: 0.875rem;
-                font-weight: 500;
-                max-width: 20rem;
-            `;
-            toast.textContent = message;
-            
-            document.body.appendChild(toast);
-            
-            // Animate in
-            requestAnimationFrame(() => {
-                toast.style.opacity = '1';
-                toast.style.transform = 'translateY(0) scale(1)';
-            });
-            
-            // Animate out and remove
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(-20px) scale(0.95)';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 300);
-            }, 4000);
+            if (isOpen) {
+                item.classList.remove('open');
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-180');
+            } else {
+                item.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.classList.add('rotate-180');
+            }
         }
 
-        // FAB interaction
-        document.querySelector('.btn-fab').addEventListener('click', function() {
-            showToast('Quick access menu coming soon! 🎯', 'info');
-        });
+        const collapsibleTrigger = e.target.closest('.collapsible-trigger');
+        if(collapsibleTrigger) {
+            const item = collapsibleTrigger.parentElement;
+            const content = item.querySelector('.collapsible-content');
+            const icon = collapsibleTrigger.querySelector('.chevron-icon');
+            const isOpen = item.classList.contains('open');
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+             if (isOpen) {
+                item.classList.remove('open');
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-180');
+            } else {
+                item.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.classList.add('rotate-180');
+            }
+        }
+    });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        }, observerOptions);
 
-        // Observe cards for animations
-        document.querySelectorAll('.level-card, .info-card').forEach(card => {
-            observer.observe(card);
-        });
+      // --- Gemini API Integration ---
 
-        // Add loading states to primary buttons
-        document.querySelectorAll('.btn-primary').forEach(button => {
-            button.addEventListener('click', function() {
-                if (!this.classList.contains('btn-loading')) {
-                    this.classList.add('btn-loading');
-                    
-                    setTimeout(() => {
-                        this.classList.remove('btn-loading');
-                        showToast('Welcome to World Padel Zone! 🏓 Let\'s get started.', 'success');
-                    }, 2000);
-                }
-            });
-        });
-    </script>
+      // AI Padel Coach Elements
+      const coachQuestionInput = document.getElementById('coach-question');
+      const askCoachBtn = document.getElementById('ask-coach-btn');
+      const coachModal = document.getElementById('coach-modal');
+      const coachResponseEl = document.getElementById('coach-response');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const askCoachText = document.getElementById('ask-coach-text');
+      const coachLoading = document.getElementById('coach-loading');
+
+      // Tournament Name Generator Elements
+      const tournamentThemeInput = document.getElementById('tournament-theme');
+      const generateNameBtn = document.getElementById('generate-name-btn');
+      const tournamentNamesOutput = document.getElementById('tournament-names-output');
+      const generateNameText = document.getElementById('generate-name-text');
+      const nameLoading = document.getElementById('name-loading');
+      
+      const apiKey = ""; // The API key will be provided by the environment
+
+      function showLoading(buttonTextEl, loadingSpinnerEl, buttonEl) {
+        buttonTextEl.classList.add('hidden');
+        loadingSpinnerEl.classList.remove('hidden');
+        buttonEl.disabled = true;
+      }
+
+      function hideLoading(buttonTextEl, loadingSpinnerEl, buttonEl) {
+        buttonTextEl.classList.remove('hidden');
+        loadingSpinnerEl.classList.add('hidden');
+        buttonEl.disabled = false;
+      }
+
+
+      // --- AI Coach Logic ---
+      askCoachBtn.addEventListener('click', async () => {
+        const question = coachQuestionInput.value.trim();
+        if (!question) {
+          coachResponseEl.innerHTML = '<p class="text-yellow-400">Please enter a question for the coach.</p>';
+          coachModal.classList.remove('hidden');
+          coachModal.classList.add('flex');
+          return;
+        }
+
+        showLoading(askCoachText, coachLoading, askCoachBtn);
+        
+        const prompt = `You are a friendly and encouraging AI Padel Coach. A user has asked the following question: "${question}". Provide a clear, helpful, and well-structured answer. Use markdown for formatting like headings, lists, and bold text.`;
+
+        try {
+          let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+          const payload = { contents: chatHistory };
+          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+          
+          const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+              throw new Error(`API request failed with status ${response.status}`);
+          }
+
+          const result = await response.json();
+          
+          if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
+            let htmlResponse = result.candidates[0].content.parts[0].text;
+            htmlResponse = htmlResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            htmlResponse = htmlResponse.replace(/^### (.*$)/gim, '<h3 class="text-xl font-semibold mb-3 mt-4">$1</h3>');
+            htmlResponse = htmlResponse.replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mb-4 mt-5">$1</h2>');
+            htmlResponse = htmlResponse.replace(/^\* (.*$)/gim, '<li>$1</li>');
+            htmlResponse = htmlResponse.replace(/<\/li>\s*<li>/g, '</li><li>');
+            htmlResponse = htmlResponse.replace(/(<li>.*<\/li>)/gs, '<ul class="list-disc list-inside space-y-2 mt-2 mb-3">$1</ul>');
+            htmlResponse = htmlResponse.replace(/\n/g, '<br>');
+
+            coachResponseEl.innerHTML = htmlResponse;
+          } else {
+              coachResponseEl.textContent = 'Sorry, I could not find an answer. Please try again.';
+          }
+        } catch (error) {
+          console.error("Error fetching from Gemini API:", error);
+          coachResponseEl.textContent = 'There was an error connecting to the AI Coach. Please check your connection and try again later.';
+        } finally {
+            coachModal.classList.remove('hidden');
+            coachModal.classList.add('flex');
+            hideLoading(askCoachText, coachLoading, askCoachBtn);
+        }
+      });
+      
+      closeModalBtn.addEventListener('click', () => {
+        coachModal.classList.add('hidden');
+        coachModal.classList.remove('flex');
+      });
+
+      // --- Tournament Name Generator Logic ---
+      generateNameBtn.addEventListener('click', async () => {
+          const theme = tournamentThemeInput.value.trim();
+          if (!theme) {
+              tournamentNamesOutput.innerHTML = '<p class="text-yellow-400">Please enter a theme to generate names.</p>';
+              return;
+          }
+
+          showLoading(generateNameText, nameLoading, generateNameBtn);
+          tournamentNamesOutput.innerHTML = '';
+
+          const prompt = `Generate a list of 10 creative and fun tournament names for a padel competition with the theme: "${theme}". Provide the names as a simple numbered list, without any introductory text.`;
+
+          try {
+              let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+              const payload = { contents: chatHistory };
+              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+              const response = await fetch(apiUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload)
+              });
+              
+              if (!response.ok) {
+                throw new Error(`API request failed with status ${response.status}`);
+              }
+
+              const result = await response.json();
+
+              if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
+                  const namesText = result.candidates[0].content.parts[0].text;
+                  const namesArray = namesText.split('\n').filter(name => name.trim() !== '');
+                  
+                  let htmlOutput = '<h4 class="font-semibold text-lg mb-3 text-white">Here are some ideas:</h4><ul class="space-y-2">';
+                  namesArray.forEach(name => {
+                      htmlOutput += `<li class="text-gray-300 bg-gray-800 p-3 rounded-lg flex items-center"><span class="text-cyan-400 mr-3">${name.split('.')[0]}.</span>${name.split('.').slice(1).join('.').trim()}</li>`;
+                  });
+                  htmlOutput += '</ul>';
+                  tournamentNamesOutput.innerHTML = htmlOutput;
+              } else {
+                  tournamentNamesOutput.innerHTML = '<p class="text-red-400">Sorry, could not generate names. Please try a different theme.</p>';
+              }
+          } catch (error) {
+              console.error("Error fetching from Gemini API:", error);
+              tournamentNamesOutput.innerHTML = '<p class="text-red-400">There was an error connecting to the generator. Please try again later.</p>';
+          } finally {
+              hideLoading(generateNameText, nameLoading, generateNameBtn);
+          }
+      });
+
+    });
+  </script>
 </body>
 </html>
