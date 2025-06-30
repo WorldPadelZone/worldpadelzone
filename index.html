@@ -65,28 +65,33 @@
   </div>
 
   <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-40 flex flex-col"> 
-    <div class="flex-grow">
-    <!-- Navigation -->
-    <nav class="relative z-20 px-6 py-6">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <div class="flex-grow pb-24 md:pb-0">
+    <!-- Desktop Navigation -->
+    <header class="sticky top-0 z-30 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
+      <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div class="flex items-center">
-          <svg class="w-8 h-8 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a5.25 5.25 0 016.372 4.863l-2.122 2.121a3 3 0 00-4.242-4.242L12 6.75z"/> <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a5.25 5.25 0 016.372 4.863l-2.122 2.121a3 3 0 00-4.242-4.242L12 6.75zM12 6.75v.007A4.48 4.48 0 0112 11.25a4.5 4.5 0 01-4.5 4.5 4.5 4.5 0 01-4.5-4.5A4.48 4.48 0 017.5 6.75v0M4.832 9.42a10.472 10.472 0 00-.818 4.83c0 5.798 4.702 10.5 10.5 10.5s10.5-4.702 10.5-10.5c0-1.999-.56-3.87-1.528-5.485"/>
-          </svg>
-          <span class="ml-3 text-xl font-semibold">World Padel Zone</span>
+            <img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'">
         </div>
-        <div class="hidden md:flex space-x-8 text-sm">
+        <div class="hidden md:flex items-center space-x-8 text-sm">
           <a href="#level-up-section" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">Travel</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">News</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">Media</a>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="hidden md:flex items-center space-x-4">
           <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors">Log In</a>
           <a href="#" class="px-4 py-2 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
         </div>
-      </div>
-    </nav>
+        <!-- Mobile Header (Logo and Sign Up) -->
+        <div class="md:hidden flex items-center justify-between w-full">
+             <img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-8 w-auto" onerror="this.style.display='none'">
+             <div>
+                <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors mr-4">Log In</a>
+                <a href="#" class="px-3 py-1.5 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+             </div>
+        </div>
+      </nav>
+    </header>
 
     <!-- Hero Section -->
     <main class="relative z-10 px-6 pt-16 pb-24 text-center">
@@ -122,40 +127,142 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Discover More</h2>
             <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Dive deeper into the world of padel with our dedicated sections on gear, tactics, destinations, and more.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Equipment Card -->
-                <a href="#equipment" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Equipment</h3>
-                    <p class="text-sm text-gray-300">Find the perfect racket, shoes, and accessories for your game.</p>
-                </a>
-                <!-- Strategy Card -->
-                <a href="#strategy" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Strategy & Tips</h3>
-                    <p class="text-sm text-gray-300">Improve your tactics with pro advice and game-winning strategies.</p>
-                </a>
-                <!-- Destinations Card -->
-                <a href="#destinations" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Destinations</h3>
-                    <p class="text-sm text-gray-300">Explore the best padel courts and resorts around the world.</p>
-                </a>
-                <!-- News Card -->
-                <a href="#news" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl font-bold mb-2 text-cyan-300">News</h3>
-                    <p class="text-sm text-gray-300">Stay up-to-date with the latest from the professional padel tour.</p>
-                </a>
-                <!-- Media Card -->
-                <a href="#padel-media" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Padel Media</h3>
-                    <p class="text-sm text-gray-300">Resources and services for clubs to grow their presence.</p>
-                </a>
-                <!-- Calendar Card -->
-                <a href="#event-calendar" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    <h3 class="text-xl font-bold mb-2 text-cyan-300">Event Calendar</h3>
-                    <p class="text-sm text-gray-300">Find upcoming tournaments and events near you.</p>
-                </a>
+                <!-- Card Links -->
+                <a href="#equipment" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1"><h3 class="text-xl font-bold mb-2 text-cyan-300">Equipment</h3><p class="text-sm text-gray-300">Find the perfect racket, shoes, and accessories for your game.</p></a>
+                <a href="#strategy" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1"><h3 class="text-xl font-bold mb-2 text-cyan-300">Strategy & Tips</h3><p class="text-sm text-gray-300">Improve your tactics with pro advice and game-winning strategies.</p></a>
+                <a href="#destinations" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1"><h3 class="text-xl font-bold mb-2 text-cyan-300">Destinations</h3><p class="text-sm text-gray-300">Explore the best padel courts and resorts around the world.</p></a>
+                <a href="#news" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1"><h3 class="text-xl font-bold mb-2 text-cyan-300">News</h3><p class="text-sm text-gray-300">Stay up-to-date with the latest from the professional padel tour.</p></a>
+                <a href="#padel-media" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1"><h3 class="text-xl font-bold mb-2 text-cyan-300">Padel Media</h3><p class="text-sm text-gray-300">Resources and services for clubs to grow their presence.</p></a>
+                <a href="#event-calendar" class="group block p-8 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1"><h3 class="text-xl font-bold mb-2 text-cyan-300">Event Calendar</h3><p class="text-sm text-gray-300">Find upcoming tournaments and events near you.</p></a>
             </div>
         </div>
     </section>
-    
+
+    <!-- Community Section -->
+    <section id="community-section" class="relative z-10 px-6 py-24 bg-gray-900 bg-opacity-80">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">The padel revolution is here!</h2>
+            <p class="text-gray-400 mb-12 max-w-3xl mx-auto">Join a vibrant community thriving on the world's most engaging racket sport, where every game builds skill and strengthens bonds.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 text-left">
+                <!-- Free Perks -->
+                <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-white">Member Perks</h3>
+                        <span class="bg-cyan-500/20 text-cyan-300 text-xs font-semibold px-2 py-1 rounded-full">Free</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Enjoy exclusive discounts and special offers on equipment and services.</p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Discounts on equipment and apparel</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Special travel package deals</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Partner deals with clubs and coaches</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Exclusive event access</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-white">Find Players Near You</h3>
+                        <span class="bg-cyan-500/20 text-cyan-300 text-xs font-semibold px-2 py-1 rounded-full">Free</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Connect with players in your area based on location and skill level.</p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Advanced partner finder system</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Match based on location and skill level</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Real-time player availability</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Skill-based matching algorithm</li>
+                    </ul>
+                </div>
+                 <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-white">Community Recognition</h3>
+                        <span class="bg-cyan-500/20 text-cyan-300 text-xs font-semibold px-2 py-1 rounded-full">Free</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Get recognized for your contributions and achievements.</p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Leaderboards and rankings</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Player spotlights and shoutouts</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Incentives for contributions</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Community awards and recognition</li>
+                    </ul>
+                </div>
+
+                <!-- Premium Perks -->
+                <div class="bg-yellow-500/10 p-6 rounded-lg border border-yellow-500/30">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-white">Exclusive Content</h3>
+                        <span class="bg-yellow-500/20 text-yellow-300 text-xs font-semibold px-2 py-1 rounded-full">Premium</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Get access to premium tutorials, expert tips, and professional match breakdowns.</p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Early access to tutorials and expert tips</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Pro match breakdowns and analysis</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Members-only gear guides & training plans</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Exclusive destination deals</li>
+                    </ul>
+                </div>
+                 <div class="bg-yellow-500/10 p-6 rounded-lg border border-yellow-500/30">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-white">Track Your Progress</h3>
+                        <span class="bg-yellow-500/20 text-yellow-300 text-xs font-semibold px-2 py-1 rounded-full">Premium</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Monitor your improvement with comprehensive tracking and analytics.</p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Save your drills and training sessions</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Track wins and performance metrics</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Personal dashboard with insights</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Achievement badge system</li>
+                    </ul>
+                </div>
+                 <div class="bg-yellow-500/10 p-6 rounded-lg border border-yellow-500/30">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-white">Priority Access</h3>
+                        <span class="bg-yellow-500/20 text-yellow-300 text-xs font-semibold px-2 py-1 rounded-full">Premium</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Be the first to access camps, events, and exclusive opportunities.</p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>First booking for camps and events</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Priority entry for giveaways</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Early access to new features</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>VIP event invitations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Community Highlights -->
+            <h3 class="text-2xl md:text-3xl font-bold mb-8">Community Highlights</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl border border-white/10">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 mx-auto mb-4">
+                        <svg class="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.124-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.124-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <p class="text-4xl font-bold">2,847</p>
+                    <p class="text-gray-400 text-sm mt-1">Active Members</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl border border-white/10">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 mx-auto mb-4">
+                        <svg class="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <p class="text-4xl font-bold">156</p>
+                    <p class="text-gray-400 text-sm mt-1">Success Stories This Month</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl border border-white/10">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 mx-auto mb-4">
+                        <svg class="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <p class="text-4xl font-bold">89</p>
+                    <p class="text-gray-400 text-sm mt-1">Events Hosted This Year</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 p-8 rounded-lg">
+                <h3 class="text-2xl font-bold mb-2">Ready to Join the Community?</h3>
+                <p class="text-gray-200 mb-6">Start your padel journey with exclusive member benefits today!</p>
+                <a href="#" class="px-8 py-3 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-200 transition-colors">Join Community</a>
+            </div>
+        </div>
+    </section>
+
     </div>
 
     <!-- Footer -->
@@ -191,6 +298,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
+        <div class="flex justify-around items-center h-16">
+            <a href="#level-up-section" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0z"></path></svg>
+                <span class="text-xs font-medium">Level Up</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                <span class="text-xs font-medium">Travel</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 2l-2-2m0 0l-2 2m2-2v12"></path></svg>
+                <span class="text-xs font-medium">News</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.55a2 2 0 01.99 1.69V18a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h9.55a2 2 0 011.69.99L15 10z"></path></svg>
+                <span class="text-xs font-medium">Media</span>
+            </a>
+        </div>
+    </nav>
   </div>
 
   <script>
