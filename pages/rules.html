@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Padel Rules - World Padel Zone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { 
+        font-family: 'Inter', sans-serif; 
+    }
+    #background-carousel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.7;
+    }
+    #background-carousel img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    #background-carousel img.active {
+        opacity: 1;
+    }
+    /* Hide scrollbar for clean look */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    /* Custom style for the active link in the side navigation */
+    .rules-nav a.active {
+        color: #22d3ee; /* Tailwind's cyan-400 */
+        border-left-color: #22d3ee;
+        font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <div id="background-carousel">
+    <img src="https://worldpadelzone.com/assets/images/4.jpg" class="active" alt="Padel racket and ball" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+4+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/5.jpg" alt="Enjoying a game of padel" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+5+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/1.jpg" alt="Padel court background" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+1+Not+Found';">
+  </div>
+
+  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-80 flex flex-col">
+    <div class="flex-grow">
+    <nav class="relative z-30 px-6 py-6 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 sticky top-0">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="#" class="flex items-center">
+          <svg class="w-8 h-8 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a5.25 5.25 0 016.372 4.863l-2.122 2.121a3 3 0 00-4.242-4.242L12 6.75z"/> <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a5.25 5.25 0 016.372 4.863l-2.122 2.121a3 3 0 00-4.242-4.242L12 6.75zM12 6.75v.007A4.48 4.48 0 0112 11.25a4.5 4.5 0 01-4.5 4.5 4.5 4.5 0 01-4.5-4.5A4.48 4.48 0 017.5 6.75v0M4.832 9.42a10.472 10.472 0 00-.818 4.83c0 5.798 4.702 10.5 10.5 10.5s10.5-4.702 10.5-10.5c0-1.999-.56-3.87-1.528-5.485"/>
+          </svg>
+          <span class="ml-3 text-xl font-semibold">World Padel Zone</span>
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm">
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Travel</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">News</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Media</a>
+          <a href="#" class="text-cyan-400 font-semibold transition-colors">Rules</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors">Log In</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="relative z-10 max-w-7xl w-full mx-auto px-6 py-16">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Official Padel Rules</h1>
+        [cite_start]<p class="mt-4 text-lg text-gray-400">Based on the International Federation of Padel (FIP) regulations. [cite: 1]</p>
+      </div>
+      
+      <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+        
+        <aside class="hidden lg:block lg:col-span-3">
+          <nav class="sticky top-32 rules-nav">
+            <h3 class="font-semibold text-white mb-4">On this page</h3>
+            <ul class="space-y-3">
+              <li><a href="#basics" class="block border-l-2 border-gray-700 pl-4 text-sm text-gray-400 hover:text-white hover:border-gray-400 transition-colors">The Basics</a></li>
+              <li><a href="#serve" class="block border-l-2 border-gray-700 pl-4 text-sm text-gray-400 hover:text-white hover:border-gray-400 transition-colors">The Serve</a></li>
+              <li><a href="#gameplay" class="block border-l-2 border-gray-700 pl-4 text-sm text-gray-400 hover:text-white hover:border-gray-400 transition-colors">Gameplay & Points</a></li>
+              <li><a href="#conduct" class="block border-l-2 border-gray-700 pl-4 text-sm text-gray-400 hover:text-white hover:border-gray-400 transition-colors">Conduct & Procedures</a></li>
+            </ul>
+          </nav>
+        </aside>
+        
+        <div class="lg:col-span-9 prose prose-invert prose-lg max-w-none prose-h2:text-cyan-400 prose-h2:mb-4 prose-h2:border-b prose-h2:border-gray-700 prose-h2:pb-3 prose-h3:text-white">
+          
+          <section id="basics">
+            <h2>The Basics</h2>
+            <h3>Player Position & Sides</h3>
+            [cite_start]<p>Padel is played in pairs [cite: 1][cite_start], with players positioned on either side of the net[cite: 2]. [cite_start]The serving player initiates the point, and the receiving player returns the ball[cite: 3]. [cite_start]While the receiver must be in their area, their partner and the server's partner can stand anywhere on their respective sides of the court[cite: 4]. [cite_start]Players are required to switch sides of the court whenever the total number of games played in a set is an odd number[cite: 5]. [cite_start]There is a 90-second maximum rest period between games[cite: 7].</p>
+            
+            <h3>Scoring</h3>
+            [cite_start]<p>Scoring in Padel is identical to tennis[cite: 62].</p>
+            <ul>
+                [cite_start]<li>Points are scored as 15, 30, and 40. The fourth point wins the game[cite: 63].</li>
+                <li>If both pairs reach 40, the score is called "deuce." [cite_start]The next point won is "advantage"[cite: 64, 65]. [cite_start]The same pair must win the next point to secure the game; otherwise, the score returns to deuce[cite: 66].</li>
+                [cite_start]<li>A set is won by the first pair to win 6 games with at least a two-game lead[cite: 68].</li>
+                [cite_start]<li>If the score reaches 6-6, a "tie-break" is played to decide the set[cite: 68, 71]. [cite_start]The first pair to 7 points, with a two-point margin, wins the tie-break and the set 7-6[cite: 72, 75].</li>
+            </ul>
+          </section>
+
+          <section id="serve">
+            <h2>The Serve</h2>
+            <h3>Serving Motion</h3>
+            <ul>
+              [cite_start]<li>The server must have both feet behind the service line when serving[cite: 11].</li>
+              [cite_start]<li>Before hitting the ball, the server must bounce it on the ground behind the service line[cite: 14].</li>
+              [cite_start]<li>The ball must be struck at or below waist level[cite: 17]. [cite_start]At least one foot must be on the ground at the moment of impact[cite: 17].</li>
+              [cite_start]<li>Walking, running, or jumping while serving is not permitted, though small foot movements that don't alter the initial stance are allowed[cite: 18].</li>
+              [cite_start]<li>If the server swings and misses the ball, the serve is counted[cite: 19].</li>
+            </ul>
+            <h3>Service Target & Faults</h3>
+            <ul>
+              [cite_start]<li>The serve is hit diagonally over the net into the opponent's service box[cite: 12].</li>
+              [cite_start]<li>A serve is a fault if it bounces outside the opponent's service box (the lines are in)[cite: 24].</li>
+              [cite_start]<li>A serve is also a fault if the ball hits the server's partner [cite: 25][cite_start], or if it hits the server's own wall before crossing the net[cite: 27].</li>
+              [cite_start]<li>After bouncing in the correct service box, if the ball hits the wire fence before a second bounce, it is a fault[cite: 26]. Hitting a glass wall is permitted.</li>
+              [cite_start]<li>The server has a second serve if the first one is a fault[cite: 47].</li>
+            </ul>
+          </section>
+
+          <section id="gameplay">
+            <h2>Gameplay & Points</h2>
+            <h3>Returning the Ball</h3>
+            <ul>
+              [cite_start]<li>The receiver must let the ball bounce once in their service area before returning the serve[cite: 38].</li>
+              [cite_start]<li>During a rally, a player can hit a volley (hitting the ball before it bounces), except when returning a serve[cite: 90].</li>
+              [cite_start]<li>Players are allowed to hit the ball after it has bounced on their court and then rebounded off one of their walls[cite: 88, 98].</li>
+              [cite_start]<li>A return is correct if the ball hits the net or posts and then lands in the opponent's court[cite: 93].</li>
+            </ul>
+            <h3>Losing a Point</h3>
+            <p>A pair loses a point if:</p>
+            <ul>
+              [cite_start]<li>The ball bounces twice on their side of the court before being returned[cite: 105].</li>
+              [cite_start]<li>A player, their racquet, or their clothing touches the net or the opponent's court while the ball is in play[cite: 101].</li>
+              [cite_start]<li>A player volleys the ball before it has crossed over the net to their side[cite: 106].</li>
+              [cite_start]<li>The ball hits a player or anything they are wearing, other than their racquet[cite: 108].</li>
+              [cite_start]<li>A player hits the ball twice in a row [cite: 107][cite_start], or both players on a team touch the ball either simultaneously or consecutively[cite: 111].</li>
+            </ul>
+            <h3>Let (Point Repetition)</h3>
+            <p>A point is replayed as a "let" if:</p>
+            <ul>
+                [cite_start]<li>On a serve, the ball touches the net and then lands in the correct service box[cite: 53]. [cite_start]If this happens on a second serve, the server only gets one more attempt[cite: 56].</li>
+                [cite_start]<li>The ball breaks or splits during a point[cite: 57].</li>
+                [cite_start]<li>Play is interrupted by an unforeseen event outside of the players' control[cite: 58].</li>
+            </ul>
+          </section>
+
+          <section id="conduct">
+            <h2>Conduct & Procedures</h2>
+            <h3>Continuous Play & Delays</h3>
+            <ul>
+                [cite_start]<li>Play must be continuous throughout the match [cite: 114][cite_start], except for permitted rest periods[cite: 115].</li>
+                [cite_start]<li>Players are allowed 90 seconds to change sides [cite: 143] [cite_start]and a maximum of 25 seconds between points[cite: 143]. [cite_start]Unjustified delays can result in a warning from the umpire[cite: 144].</li>
+                [cite_start]<li>If a player is injured, they are allowed 3 minutes for medical attention[cite: 145]. [cite_start]Loss of physical condition due to muscle ache or fatigue is not considered a valid reason for delay[cite: 147].</li>
+            </ul>
+            <h3>Clothing & Equipment</h3>
+            <ul>
+                <li>Players must wear clean and appropriate clothing. [cite_start]Sleeveless tops and swimsuits are not allowed[cite: 135].</li>
+                [cite_start]<li>In team matches, wearing the same clothes is recommended but not mandatory[cite: 137].</li>
+            </ul>
+            <h3>Behavior & Discipline</h3>
+            <ul>
+                [cite_start]<li>Players must behave in a courteous and polite manner at all times[cite: 140].</li>
+                [cite_start]<li>Players cannot leave the play area during a match without the umpire's permission, except to change sides[cite: 141].</li>
+                [cite_start]<li>Audible and visible obscenities are prohibited[cite: 148, 149].</li>
+                [cite_start]<li>Violently hitting the ball out of play or throwing the racquet are considered abuse and will be penalized[cite: 150].</li>
+                [cite_start]<li>Aggressive or unsportsmanlike behavior towards officials, opponents, or spectators will be penalized by the head umpire[cite: 151].</li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+    </main>
+    
+    </div>
+
+    <footer class="relative z-10 bg-gray-900 bg-opacity-95 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+                <div class="lg:col-span-1">
+                    <h3 class="text-lg font-semibold text-white mb-2">Subscribe to our Newsletter</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Get the latest news, travel deals, and padel tips straight to your inbox.</p>
+                    <form action="mailto:hello@worldpadelzone.com" method="post" enctype="text/plain" class="flex flex-col sm:flex-row gap-2 max-w-md">
+                        <input type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white text-sm">
+                        <button type="submit" class="px-5 py-2 bg-cyan-500 text-white font-medium rounded-md hover:bg-cyan-600 transition-colors whitespace-nowrap text-sm">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="text-center md:text-left">
+                    <a href="mailto:hello@worldpadelzone.com" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">hello@worldpadelzone.com</a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/worldpadelzone/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.04.05-5.85.22-6.73.52a4.43 4.43 0 00-1.6 1.6C3.7 5.03 3.5 6.84 3.5 10.88v2.24c0 4.04.22 5.85.52 6.73a4.43 4.43 0 001.6 1.6c.88.3 2.69.5 6.73.52h2.24c4.04 0 5.85-.22 6.73-.52a4.43 4.43 0 001.6-1.6c.3-.88.5-2.69.52-6.73v-2.24c0-4.04-.22-5.85-.52-6.73a4.43 4.43 0 00-1.6-1.6C18.16 2.22 16.35 2.05 12.315 2zM12 7.17a4.83 4.83 0 100 9.66 4.83 4.83 0 000-9.66zM12 15a3 3 0 110-6 3 3 0 010 6zm6.4-8.27a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z" clip-rule="evenodd" /></svg>
+                        <span class="sr-only">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/worldpadelzone" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-500">&copy; WorldPadelZone 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Background carousel logic
+      const carousel = document.getElementById('background-carousel');
+      if (carousel) {
+        const images = carousel.getElementsByTagName('img');
+        let currentIndex = 0;
+        const totalImages = images.length;
+        const intervalTime = 5000;
+
+        function changeImage() {
+          if (images.length > 0) {
+              images[currentIndex].classList.remove('active');
+              currentIndex = (currentIndex + 1) % totalImages;
+              images[currentIndex].classList.add('active');
+          }
+        }
+        setInterval(changeImage, intervalTime);
+      }
+
+      // Rules page navigation observer
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.rules-nav a');
+      
+      if(sections.length > 0 && navLinks.length > 0) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const id = entry.target.getAttribute('id');
+            const navLink = document.querySelector(`.rules-nav a[href="#${id}"]`);
+            
+            if (entry.isIntersecting) {
+              navLinks.forEach(link => link.classList.remove('active'));
+              navLink.classList.add('active');
+            }
+          });
+        }, { rootMargin: "-30% 0px -70% 0px" }); // trigger when section is in the middle of the viewport
+
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
