@@ -1,4 +1,4 @@
-<!-- Version 1.3 -->
+<!-- Version 1.4 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -347,7 +347,8 @@
                 { title: "Module 1: The Basics", content: "Understanding the court layout, the unique glass walls, scoring, and basic rules of play." },
                 { title: "Module 2: Your First Hit", content: "Learn the continental grip, ready position, and practice simple forehand and backhand shots." },
                 { title: "Module 3: Introduction to the Volley", content: "Step up to the net and learn the fundamentals of volleying the ball before it bounces." }
-            ]
+            ],
+            cta: { text: "Start Your Beginner's Guide", link: "levelup-beginner.html" }
         },
         {
             id: "level-2",
@@ -356,7 +357,8 @@
                 { title: "Module 1: Using the Walls", content: "Learn to let the ball hit the back and side walls and play it confidently on the return." },
                 { title: "Module 2: The Bandeja Shot", content: "Master the bandeja, a key defensive overhead shot to maintain your position at the net." },
                 { title: "Module 3: Basic Court Positioning", content: "Understand where to stand during serves, returns, and rallies to cover the court effectively with your partner." }
-            ]
+            ],
+            cta: { text: "Start Your Intermediate Guide", link: "#" }
         },
         {
             id: "level-3",
@@ -365,7 +367,8 @@
                 { title: "Module 1: The Vibora", content: "Add the aggressive vibora (viper) shot to your arsenal to put pressure on your opponents." },
                 { title: "Module 2: Advanced Net Play", content: "Learn how to read your opponents, poach at the net, and finish points with decisive volleys." },
                 { title: "Module 3: Defensive Lobs and Dropshots", content: "Master the art of the defensive lob to reset the point, and use the dropshot to catch opponents off guard." }
-            ]
+            ],
+            cta: { text: "Start Your Advanced Guide", link: "#" }
         },
         {
             id: "level-4",
@@ -374,7 +377,8 @@
                 { title: "Module 1: Tactical Game Planning", content: "Analyze opponent weaknesses and develop game plans before and during a match." },
                 { title: "Module 2: Counter-Attacking Strategies", content: "Learn how to turn defense into offense with powerful counter-punches and wall-assisted attacks." },
                 { title: "Module 3: The Mental Game", content: "Develop mental toughness, focus, and effective communication with your partner for high-pressure situations." }
-            ]
+            ],
+            cta: { text: "Start Your Expert Guide", link: "#" }
         }
     ];
 
@@ -401,11 +405,11 @@
         });
         
         let ctaButton = '';
-        if (level.id === 'level-1') {
+        if (level.cta) {
             ctaButton = `
                 <div class="p-4 border-t border-gray-700">
-                    <a href="levelup-beginner.html" class="block w-full text-center px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">
-                        Start Your Beginner's Guide
+                    <a href="${level.cta.link}" class="block w-full text-center px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">
+                        ${level.cta.text}
                     </a>
                 </div>
             `;
@@ -417,22 +421,26 @@
                 <svg class="chevron-icon w-6 h-6 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="accordion-content">
-                ${modulesHtml}
-                ${ctaButton}
+                <div class="collapsible-wrapper">
+                    ${modulesHtml}
+                    ${ctaButton}
+                </div>
             </div>
         `;
         accordionContainer.appendChild(item);
     });
     
     accordionContainer.addEventListener('click', function(e) {
-        const accordionTrigger = e.target.closest('.accordion-trigger');
-        if (accordionTrigger) {
-            const item = accordionTrigger.parentElement;
+        const trigger = e.target.closest('.accordion-trigger, .collapsible-trigger');
+
+        if (!trigger) return;
+
+        if (trigger.classList.contains('accordion-trigger')) {
+            const item = trigger.parentElement;
             const content = item.querySelector('.accordion-content');
-            const icon = accordionTrigger.querySelector('.chevron-icon');
+            const icon = trigger.querySelector('.chevron-icon');
             const isOpen = item.classList.contains('open');
 
-            // Close all other open items
             document.querySelectorAll('.accordion-item.open').forEach(openItem => {
                 if (openItem !== item) {
                     openItem.classList.remove('open');
@@ -452,14 +460,14 @@
             }
         }
 
-        const collapsibleTrigger = e.target.closest('.collapsible-trigger');
-        if(collapsibleTrigger) {
-            const item = collapsibleTrigger.parentElement;
+        if (trigger.classList.contains('collapsible-trigger')) {
+            const item = trigger.parentElement;
             const content = item.querySelector('.collapsible-content');
-            const icon = collapsibleTrigger.querySelector('.chevron-icon');
+            const icon = trigger.querySelector('.chevron-icon');
             const isOpen = item.classList.contains('open');
+            const mainAccordionContent = trigger.closest('.accordion-content');
 
-             if (isOpen) {
+            if (isOpen) {
                 item.classList.remove('open');
                 content.style.maxHeight = null;
                 icon.classList.remove('rotate-180');
@@ -467,6 +475,10 @@
                 item.classList.add('open');
                 content.style.maxHeight = content.scrollHeight + 'px';
                 icon.classList.add('rotate-180');
+            }
+            // Recalculate parent accordion height
+            if (mainAccordionContent.parentElement.classList.contains('open')) {
+                 mainAccordionContent.style.maxHeight = mainAccordionContent.scrollHeight + 'px';
             }
         }
     });
