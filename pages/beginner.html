@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level Up: Beginner's Guide - World Padel Zone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { 
+        font-family: 'Inter', sans-serif; 
+    }
+    #background-carousel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.7; 
+    }
+    #background-carousel img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    #background-carousel img.active {
+        opacity: 1;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .modal {
+        transition: opacity 0.25s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <!-- Background Image Carousel -->
+  <div id="background-carousel">
+    <img src="https://worldpadelzone.com/assets/images/5.jpg" class="active" alt="Padel players" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+5+Not+Found';">
+    <img src="https://worldpadelzone.com/assets/images/1.jpg" alt="Padel court" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=Image+1+Not+Found';">
+  </div>
+
+  <div class="relative min-h-screen overflow-y-auto no-scrollbar bg-black bg-opacity-70 flex flex-col"> 
+    <div class="flex-grow pb-24 md:pb-0">
+    <!-- Desktop Navigation -->
+    <header class="sticky top-0 z-30 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
+      <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="hidden md:flex items-center">
+            <a href="index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'"></a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 text-sm">
+          <a href="#" class="text-cyan-400 font-semibold">Level Up</a>
+          <a href="coaches.html" class="text-gray-300 hover:text-white transition-colors">Coaches Corner</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Travel</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">News</a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors">Media</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors">Log In</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+        </div>
+        <!-- Mobile Header -->
+        <div class="md:hidden flex items-center justify-between w-full">
+             <a href="index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-8 w-auto" onerror="this.style.display='none'"></a>
+             <div>
+                <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors mr-4">Log In</a>
+                <a href="#" class="px-3 py-1.5 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+             </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 px-4 sm:px-6 py-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Level Up: The Complete Beginner</h1>
+            <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Your journey starts here. Master the basics and build a solid foundation for your padel career.</p>
+        </div>
+
+        <!-- Component Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <a href="#padel-101-section" class="main-card group block p-6 text-center bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-xl font-bold mb-2 text-cyan-300">Padel 101</h3>
+                <p class="text-sm text-gray-300">The ultimate beginner's guide to get you started.</p>
+            </a>
+            <a href="#" id="equipment-card" class="main-card group block p-6 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-xl font-bold mb-2 text-cyan-300">Essential Equipment</h3>
+                <p class="text-sm text-gray-300">Choosing the right racket and balls for your level.</p>
+            </a>
+            <a href="#" id="shoes-card" class="main-card group block p-6 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-xl font-bold mb-2 text-cyan-300">Choosing Shoes</h3>
+                <p class="text-sm text-gray-300">Why padel-specific footwear is crucial for your game.</p>
+            </a>
+            <a href="#rules-section" class="main-card group block p-6 text-center bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                <h3 class="text-xl font-bold mb-2 text-cyan-300">The Rules</h3>
+                <p class="text-sm text-gray-300">A simple breakdown of how to play and score.</p>
+            </a>
+        </div>
+        
+        <!-- Padel 101 Detailed Section -->
+        <section id="padel-101-section" class="bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-lg">
+            <h2 class="text-3xl font-bold mb-6 text-center text-cyan-300">Padel 101: A Beginner's Guide</h2>
+            <div id="padel-101-accordion" class="w-full text-left space-y-2">
+                <!-- Accordion items will be injected by JS -->
+            </div>
+        </section>
+
+        <!-- Hero Divider -->
+        <div class="my-16 grid grid-cols-3 gap-4 h-48">
+            <div class="col-span-1 h-full rounded-lg overflow-hidden">
+                 <img src="https://worldpadelzone.com/assets/images/1.jpg" class="w-full h-full object-cover" alt="Padel Court">
+            </div>
+            <div class="col-span-2 h-full rounded-lg overflow-hidden">
+                 <img src="https://worldpadelzone.com/assets/images/3.jpg" class="w-full h-full object-cover" alt="Padel action shot">
+            </div>
+        </div>
+
+        <!-- Rules Detailed Section -->
+        <section id="rules-section" class="bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-lg">
+            <h2 class="text-3xl font-bold mb-6 text-center text-cyan-300">Official Rules of Padel</h2>
+            <div id="rules-accordion" class="w-full text-left space-y-2">
+                <!-- Accordion items will be injected by JS -->
+            </div>
+        </section>
+
+      </div>
+    </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-gray-900 bg-opacity-95 border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-6 py-8">
+          <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+              <div class="text-center md:text-left">
+                  <a href="mailto:hello@worldpadelzone.com" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">hello@worldpadelzone.com</a>
+              </div>
+              <div class="flex space-x-6">
+                  <a href="https://www.instagram.com/worldpadelzone/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c-4.04.05-5.85.22-6.73.52a4.43 4.43 0 00-1.6 1.6C3.7 5.03 3.5 6.84 3.5 10.88v2.24c0 4.04.22 5.85.52 6.73a4.43 4.43 0 001.6 1.6c.88.3 2.69.5 6.73.52h2.24c4.04 0 5.85-.22 6.73-.52a4.43 4.43 0 001.6-1.6c.3-.88.5-2.69.52-6.73v-2.24c0-4.04-.22-5.85-.52-6.73a4.43 4.43 0 00-1.6-1.6C18.16 2.22 16.35 2.05 12.315 2zM12 7.17a4.83 4.83 0 100 9.66 4.83 4.83 0 000-9.66zM12 15a3 3 0 110-6 3 3 0 010 6zm6.4-8.27a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z" clip-rule="evenodd" /></svg></a>
+                  <a href="https://www.facebook.com/worldpadelzone" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+              </div>
+              <div class="text-center md:text-right">
+                  <p class="text-sm text-gray-500">&copy; WorldPadelZone 2025</p>
+              </div>
+          </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
+        <div class="flex justify-around items-center h-16">
+             <a href="#" class="flex flex-col items-center text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0z"></path></svg>
+                <span class="text-xs font-medium">Level Up</span>
+            </a>
+            <a href="coaches.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                <span class="text-xs font-medium">Coaches</span>
+            </a>
+            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                <span class="text-xs font-medium">Travel</span>
+            </a>
+        </div>
+    </nav>
+  </div>
+
+  <!-- Shoes Modal -->
+  <div id="shoes-modal" class="modal fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4">
+    <div class="bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto no-scrollbar relative">
+        <button id="close-shoes-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10">&times;</button>
+        <div class="p-8">
+            <h3 class="text-2xl font-bold text-cyan-300 mb-4">Why Padel Shoes Are Your Most Important Purchase</h3>
+            <div class="prose prose-invert prose-sm max-w-none text-gray-300 space-y-4">
+                <p>Proper shoes are the most important buying decision when starting to play padel because they directly impact your performance, comfort, and—most critically—injury prevention. Here’s why:</p>
+                <ul>
+                    <li><strong>Injury Prevention:</strong> Padel involves frequent lateral movements and sudden pivots. Regular trainers lack the specific ankle and midfoot support needed, increasing the risk of sprains and twists. Padel shoes are designed with reinforced support to protect your feet, ankles, and knees.</li>
+                    <li><strong>Optimal Grip and Traction:</strong> Padel courts require shoes with a specialized herringbone (zig-zag) tread pattern. This ensures the right balance of grip for explosive starts and controlled sliding. Regular shoes can lead to slips or restricted movement.</li>
+                    <li><strong>Support for Fast Movements:</strong> The unique demands of padel mean your footwear must offer both stability and flexibility. Padel shoes provide a secure fit and a stable base, reducing the risk of your foot rolling inside the shoe.</li>
+                    <li><strong>Enhanced Comfort and Endurance:</strong> Good padel shoes feature advanced cushioning to absorb shocks, reducing foot fatigue and blisters, letting you play longer and more comfortably.</li>
+                    <li><strong>Durability:</strong> The abrasive surface of padel courts quickly wears down regular trainers. Padel shoes are built with durable materials and reinforced toe caps to withstand the rigors of the sport.</li>
+                    <li><strong>Performance Boost:</strong> With the right shoes, you’ll move faster, turn more sharply, and feel more confident on court. This translates into better reaction times and a more enjoyable playing experience.</li>
+                </ul>
+                <blockquote class="border-l-4 border-cyan-400 pl-4 italic text-gray-400">
+                    “Not only will the correct shoes help to prevent serious injury, but you will most certainly see an improvement in your game due to the comfort, increase in grip and support of the right shoes.”
+                </blockquote>
+                <p><strong>In summary:</strong> Investing in proper padel shoes is essential because they are specifically engineered to meet the sport’s unique physical demands, keep you safe from injury, and help you perform at your best from your very first game.</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Equipment Modal -->
+  <div id="equipment-modal" class="modal fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4">
+    <div class="bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto no-scrollbar relative">
+        <button id="close-equipment-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10">&times;</button>
+        <div class="p-8">
+            <h3 class="text-2xl font-bold text-cyan-300 mb-4">Essential Padel Equipment for Beginners</h3>
+            <div class="prose prose-invert prose-sm max-w-none text-gray-300 space-y-6">
+                <div>
+                    <h4 class="font-bold text-lg text-white">1. Padel Racket</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li><strong>Lightweight:</strong> Choose a racket around 340-370 grams for easier handling.</li>
+                        <li><strong>Shape:</strong> Opt for a round or teardrop shape to maximize control and accuracy.</li>
+                        <li><strong>Feel:</strong> Ensure the grip is comfortable. Avoid heavy or high-performance rackets initially.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-white">2. Padel Balls</h4>
+                    <p>Use padel-specific balls. They are lighter and have lower pressure than tennis balls, offering better bounce and control on padel courts.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-white">3. Grips and Overgrips</h4>
+                    <p>Add an overgrip to your racket for extra cushioning, sweat absorption, and better control. Replace it regularly to maintain comfort.</p>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-lg text-white">4. Accessories</h4>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li><strong>Wristbands:</strong> Absorb sweat and provide wrist support to improve your grip.</li>
+                        <li><strong>Padel Bag:</strong> Protect and organize your racket, balls, and other gear.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-white">5. Clothing and Sun Protection</h4>
+                    <p>Wear breathable, comfortable sportswear. For outdoor courts, use caps, visors, or headbands for sun and sweat protection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const padel101Content = [
+            { title: "Padel Fundamentals", content: "Padel is played on a 10m x 20m court enclosed by glass walls. Unlike tennis, it uses solid rackets and underhand serves, primarily as a doubles game. The sport values placement over power. Beginners should choose a round, lightweight racket." },
+            { title: "Mastering Technique", content: "Use the 'continental grip,' as if shaking hands with the racket. Maintain a ready position with knees bent and weight forward. Key shots to learn are the forehand, backhand, volley (at the net), and the defensive high lob. A unique shot is the 'bandeja,' a defensive overhead hit with underspin." },
+            { title: "Positioning & The Walls", content: "The walls are your friends! After the ball bounces, you can let it hit a wall before you return it. There are two main positions: defensive (behind the service line) and offensive (at the net). Avoid 'No Man's Land' in the middle. Always move as a unit with your partner." },
+            { title: "Rules & Scoring Simplified", content: "Scoring is identical to tennis (15, 30, 40, game). A match is the best of 3 sets. A set is won by the first team to 6 games with a 2-game lead. Serves are underhand, must bounce first, and are hit diagonally. You get two serves per point." },
+            { title: "Common Beginner Mistakes", content: "Avoid using a long, tennis-style swing; keep it compact. Don't try to hit every ball with maximum power; control is key. Learn to use the walls instead of fearing them. Communicate with your partner about who is taking the shot to avoid confusion." }
+        ];
+
+        const rulesContent = [
+            { title: "The Serve", content: "The serve must be underhand, hit at or below waist level after one bounce behind the service line. It must travel diagonally into the opponent's service box. You get two attempts if the first is a fault." },
+            { title: "Scoring", content: "Padel uses the same scoring as tennis: 15, 30, 40, and game. A set is won by the first pair to win 6 games with a two-game lead. If the score reaches 6-6, a tie-break is usually played to 7 points (with a 2-point lead)." },
+            { title: "Gameplay & Rallies", content: "The ball must bounce on the opponent's side before hitting a wall. Players can hit the ball after it has bounced on their court and then rebounded off any of their own walls. Volleys are allowed, but not on the service return." },
+            { title: "Faults & Lost Points", content: "A point is lost if the ball bounces twice on your side, if you hit the ball into the net, if the ball hits you or your partner, or if you touch the net while the ball is in play. Hitting the ball directly into the opponent's wall (without it bouncing first) is also a fault." },
+            { title: "The Court & The Net", content: "The court is smaller than a tennis court (10m x 20m) and enclosed by glass and mesh walls. The walls are an integral part of the game. The net is slightly lower than a tennis net." }
+        ];
+
+        function createAccordion(containerId, contentArray) {
+            const accordionContainer = document.getElementById(containerId);
+            if (!accordionContainer) return;
+
+            contentArray.forEach(itemData => {
+                const item = document.createElement('div');
+                item.className = 'accordion-item bg-gray-700/50 border border-gray-600 rounded-lg';
+                item.innerHTML = `
+                    <button class="accordion-trigger w-full flex items-center justify-between text-left p-4">
+                        <span class="text-lg font-medium text-white">${itemData.title}</span>
+                        <svg class="chevron-icon w-6 h-6 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 pt-0 text-gray-300">
+                            <p>${itemData.content}</p>
+                        </div>
+                    </div>
+                `;
+                accordionContainer.appendChild(item);
+            });
+
+            accordionContainer.addEventListener('click', function(e) {
+                const trigger = e.target.closest('.accordion-trigger');
+                if (trigger) {
+                    const item = trigger.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const icon = trigger.querySelector('.chevron-icon');
+                    const isOpen = item.classList.contains('open');
+
+                    document.querySelectorAll(`#${containerId} .accordion-item.open`).forEach(openItem => {
+                        if (openItem !== item) {
+                            openItem.classList.remove('open');
+                            openItem.querySelector('.accordion-content').style.maxHeight = null;
+                            openItem.querySelector('.accordion-trigger .chevron-icon').classList.remove('rotate-180');
+                        }
+                    });
+
+                    if (isOpen) {
+                        item.classList.remove('open');
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        item.classList.add('open');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.classList.add('rotate-180');
+                    }
+                }
+            });
+        }
+
+        createAccordion('padel-101-accordion', padel101Content);
+        createAccordion('rules-accordion', rulesContent);
+
+        // --- Modal Logic ---
+        function setupModal(cardId, modalId, closeBtnId) {
+            const card = document.getElementById(cardId);
+            const modal = document.getElementById(modalId);
+            const closeBtn = document.getElementById(closeBtnId);
+
+            function openModal() {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        setupModal('shoes-card', 'shoes-modal', 'close-shoes-modal');
+        setupModal('equipment-card', 'equipment-modal', 'close-equipment-modal');
+    });
+  </script>
+</body>
+</html>
