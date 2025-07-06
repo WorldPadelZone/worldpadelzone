@@ -1,4 +1,4 @@
-<!-- Version 1.4 -->
+<!-- Version 1.5 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,6 +74,7 @@
             <a href="index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'"></a>
         </div>
         <div class="hidden md:flex items-center space-x-8 text-sm">
+          <a href="index.html" class="text-cyan-400 font-semibold">Home</a>
           <a href="levelup-beginner.html" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
           <a href="coaches.html" class="text-gray-300 hover:text-white transition-colors">Coaches Corner</a>
           <a href="https://worldpadelzone.com/pages/travel.html" class="text-gray-300 hover:text-white transition-colors">Travel</a>
@@ -300,6 +301,10 @@
 
     <nav class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
         <div class="flex justify-around items-center h-16">
+            <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span class="text-xs font-medium">Home</span>
+            </a>
             <a href="levelup-beginner.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0z"></path></svg>
                 <span class="text-xs font-medium">Level Up</span>
@@ -311,10 +316,6 @@
             <a href="https://worldpadelzone.com/pages/travel.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                 <span class="text-xs font-medium">Travel</span>
-            </a>
-            <a href="https://worldpadelzone.com/pages/media.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
-                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.55a2 2 0 01.99 1.69V18a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h9.55a2 2 0 011.69.99L15 10z"></path></svg>
-                <span class="text-xs font-medium">Media</span>
             </a>
         </div>
     </nav>
@@ -368,7 +369,7 @@
                 { title: "Module 2: Advanced Net Play", content: "Learn how to read your opponents, poach at the net, and finish points with decisive volleys." },
                 { title: "Module 3: Defensive Lobs and Dropshots", content: "Master the art of the defensive lob to reset the point, and use the dropshot to catch opponents off guard." }
             ],
-            cta: { text: "Start Your Advanced Guide", link: "#" }
+            cta: { text: "Start Your Advanced Guide", link: "levelup-advanced.html" }
         },
         {
             id: "level-4",
