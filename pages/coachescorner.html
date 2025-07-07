@@ -1,3 +1,4 @@
+<!-- Version 1.2 -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -62,7 +63,8 @@
             <a href="index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'"></a>
         </div>
         <div class="hidden md:flex items-center space-x-8 text-sm">
-          <a href="index.html#level-up-section" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
+          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="levelup-beginner.html" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
           <a href="#" class="text-cyan-400 font-semibold">Coaches Corner</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">Travel</a>
           <a href="#" class="text-gray-300 hover:text-white transition-colors">News</a>
@@ -207,6 +209,10 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
         <div class="flex justify-around items-center h-16">
+             <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span class="text-xs font-medium">Home</span>
+            </a>
              <a href="#" class="flex flex-col items-center text-cyan-400 transition-colors">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                 <span class="text-xs font-medium">Coaches</span>
@@ -219,42 +225,55 @@
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 2l-2-2m0 0l-2 2m2-2v12"></path></svg>
                 <span class="text-xs font-medium">News</span>
             </a>
-            <a href="#" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
-                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.55a2 2 0 01.99 1.69V18a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h9.55a2 2 0 011.69.99L15 10z"></path></svg>
-                <span class="text-xs font-medium">Media</span>
-            </a>
         </div>
     </nav>
-  </div>
-
-  <!-- Coach Profile Modal -->
-  <div id="profile-modal" class="modal fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div id="profile-modal-content" class="bg-gray-800 rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto no-scrollbar relative">
-       <!-- Content will be injected by JS -->
-    </div>
   </div>
 
   <!-- Recommend Form Modal -->
   <div id="recommend-modal" class="modal fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4">
       <div class="bg-gray-800 rounded-xl shadow-2xl w-full max-w-lg relative">
-          <button id="close-recommend-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
+          <button id="close-recommend-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
           <div class="p-8">
               <h3 class="text-xl font-bold text-white mb-4">Recommend a Coach</h3>
-              <form id="recommend-form" action="mailto:hello@worldpadelzone.com" method="post" enctype="text/plain" class="space-y-4">
-                  <div>
-                      <label for="rec-coach-name" class="block text-sm font-medium text-gray-300">Coach's Name</label>
-                      <input type="text" id="rec-coach-name" name="CoachName" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+              <form id="recommend-form" action="mailto:coaches@worldpadelzone.com" method="post" enctype="text/plain" class="space-y-4">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                          <label for="rec-coach-name" class="block text-sm font-medium text-gray-300">First Name</label>
+                          <input type="text" id="rec-coach-name" name="FirstName" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                      </div>
+                      <div>
+                          <label for="rec-coach-surname" class="block text-sm font-medium text-gray-300">Surname</label>
+                          <input type="text" id="rec-coach-surname" name="Surname" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                      </div>
                   </div>
                   <div>
-                      <label for="rec-coach-area" class="block text-sm font-medium text-gray-300">Area / Club</label>
-                      <input type="text" id="rec-coach-area" name="Area" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                      <label for="rec-coach-location" class="block text-sm font-medium text-gray-300">Location (Club/Area)</label>
+                      <input type="text" id="rec-coach-location" name="Location" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                   </div>
+                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label for="rec-coach-phone" class="block text-sm font-medium text-gray-300">Phone Number</label>
+                          <input type="tel" id="rec-coach-phone" name="Phone" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                        </div>
+                        <div>
+                          <label for="rec-coach-email" class="block text-sm font-medium text-gray-300">Email Address</label>
+                          <input type="email" id="rec-coach-email" name="Email" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                        </div>
+                   </div>
                    <div>
-                      <label for="rec-coach-contact" class="block text-sm font-medium text-gray-300">WhatsApp or Email</label>
-                      <input type="text" id="rec-coach-contact" name="Contact" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                  </div>
+                        <label for="rec-specialty" class="block text-sm font-medium text-gray-300">Coaching Specialty</label>
+                        <select id="rec-specialty" name="Specialty" required class="w-full mt-1 bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            <option value="">Select a specialty...</option>
+                            <option value="Kids">Kids</option>
+                            <option value="Women">Women</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                            <option value="Groups">Groups</option>
+                        </select>
+                   </div>
                   <div>
-                      <label for="rec-reason" class="block text-sm font-medium text-gray-300">Reason for Recommendation</label>
+                      <label for="rec-reason" class="block text-sm font-medium text-gray-300">Motivation / Testimonial</label>
                       <textarea id="rec-reason" name="Reason" rows="3" required class="mt-1 w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
                   </div>
                   <button type="submit" class="w-full px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">Submit Recommendation</button>
@@ -267,76 +286,11 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const coaches = [
-        {
-            id: 1,
-            name: "Codi van Reenen",
-            area: "Parklands, Cape Town",
-            rating: 4.9,
-            reviews: 68,
-            coachingTypes: ["Individual", "Group", "Kids"],
-            rate: 350,
-            photo: "https://placehold.co/600x400/1e40af/FFFFFF?text=Codi",
-            bio: "A certified padel fanatic with 5 years of coaching experience, Codi specializes in developing junior talent and making padel fun and accessible for all ages. His energetic approach helps players build a strong foundation.",
-            qualifications: ["SAPA Level 1 Certified", "First Aid for Sports"],
-            whatsapp: "https://wa.me/27831234567?text=Hi+Codi,+I+saw+your+profile+on+World+Padel+Zone...",
-            verified: true
-        },
-        {
-            id: 2,
-            name: "Kevin Mercuur",
-            area: "Camps Bay, Cape Town",
-            rating: 4.7,
-            reviews: 52,
-            coachingTypes: ["Individual", "Clinics", "Defense"],
-            rate: 450,
-            photo: "https://placehold.co/600x400/be123c/FFFFFF?text=Kevin",
-            bio: "With a background in competitive tennis, Kevin brings a tactical mindset to the padel court. He excels at teaching defensive strategies, helping players master the walls and control the pace of the game.",
-            qualifications: ["ITF Padel Certified", "Advanced Tactical Padel"],
-            whatsapp: "https://wa.me/27831234568?text=Hi+Kevin,+I+saw+your+profile+on+World+Padel+Zone...",
-            verified: true
-        },
-        {
-            id: 3,
-            name: "Luke Skywalker",
-            area: "Stellenbosch",
-            rating: 4.8,
-            reviews: 88,
-            coachingTypes: ["Group", "Clinics", "Bandeja"],
-            rate: 400,
-            photo: "https://placehold.co/600x400/166534/FFFFFF?text=Luke",
-            bio: "A master of the bandeja and vibora, Luke helps advanced players add power and precision to their overhead game. His clinics are famous for their intensity and focus on attacking play.",
-            qualifications: ["Spanish Padel Federation Certified", "Pro-player experience"],
-            whatsapp: "https://wa.me/27831234569?text=Hi+Luke,+I+saw+your+profile+on+World+Padel+Zone...",
-            verified: false
-        },
-        {
-            id: 4,
-            name: "Aisha Williams",
-            area: "Bellville, Cape Town",
-            rating: 4.6,
-            reviews: 45,
-            coachingTypes: ["Individual", "Kids"],
-            rate: 300,
-            photo: "https://placehold.co/600x400/86198f/FFFFFF?text=Aisha",
-            bio: "Aisha's patient and encouraging coaching style makes her a favorite among beginners and kids. She focuses on building confidence and ensuring every lesson is enjoyable.",
-            qualifications: ["SAPA Junior Development", "Sports Psychology Diploma"],
-            whatsapp: "https://wa.me/27831234570?text=Hi+Aisha,+I+saw+your+profile+on+World+Padel+Zone...",
-            verified: true
-        },
-        {
-            id: 5,
-            name: "Dirk van der Merwe",
-            area: "Durbanville",
-            rating: 4.5,
-            reviews: 39,
-            coachingTypes: ["Group", "Strategy"],
-            rate: 380,
-            photo: "https://placehold.co/600x400/ea580c/FFFFFF?text=Dirk",
-            bio: "A tactical genius, Dirk loves breaking down the game for intermediate players looking to improve their match play. He focuses on positioning, shot selection, and partner communication.",
-            qualifications: ["SAPA Level 2 Certified"],
-            whatsapp: "https://wa.me/27831234571?text=Hi+Dirk,+I+saw+your+profile+on+World+Padel+Zone...",
-            verified: false
-        },
+        { id: 1, name: "Codi van Reenen", area: "Parklands, Cape Town", rating: 4.9, reviews: 68, coachingTypes: ["Individual", "Group", "Kids"], rate: 350, photo: "https://placehold.co/600x400/1e40af/FFFFFF?text=Codi", verified: true, profileUrl: "coaches/codi-van-reenen.html" },
+        { id: 2, name: "Kevin Mercuur", area: "Camps Bay, Cape Town", rating: 4.7, reviews: 52, coachingTypes: ["Individual", "Clinics", "Defense"], rate: 450, photo: "https://placehold.co/600x400/be123c/FFFFFF?text=Kevin", verified: true, profileUrl: "coaches/kevin-mercuur.html" },
+        { id: 3, name: "Luke Skywalker", area: "Stellenbosch", rating: 4.8, reviews: 88, coachingTypes: ["Group", "Clinics", "Bandeja"], rate: 400, photo: "https://placehold.co/600x400/166534/FFFFFF?text=Luke", verified: false, profileUrl: "coaches/luke-skywalker.html" },
+        { id: 4, name: "Aisha Williams", area: "Bellville, Cape Town", rating: 4.6, reviews: 45, coachingTypes: ["Individual", "Kids"], rate: 300, photo: "https://placehold.co/600x400/86198f/FFFFFF?text=Aisha", verified: true, profileUrl: "coaches/aisha-williams.html" },
+        { id: 5, name: "Dirk van der Merwe", area: "Durbanville", rating: 4.5, reviews: 39, coachingTypes: ["Group", "Strategy"], rate: 380, photo: "https://placehold.co/600x400/ea580c/FFFFFF?text=Dirk", verified: false, profileUrl: "coaches/dirk-van-der-merwe.html" },
       ];
 
       const coachesGrid = document.getElementById('coaches-grid');
@@ -371,7 +325,7 @@
                     </div>
                     <div class="mt-auto pt-4 border-t border-gray-700 flex justify-between items-center">
                         <p class="text-lg font-bold text-cyan-400">R${coach.rate}<span class="text-sm font-normal text-gray-400">/hr</span></p>
-                        <button class="view-profile-btn px-4 py-2 bg-cyan-500 text-white text-sm font-semibold rounded-md hover:bg-cyan-600 transition-colors" data-id="${coach.id}">View Profile</button>
+                        <a href="${coach.profileUrl}" class="px-4 py-2 bg-cyan-500 text-white text-sm font-semibold rounded-md hover:bg-cyan-600 transition-colors">View Profile</a>
                     </div>
                 </div>
             `;
@@ -399,74 +353,12 @@
 
       // Initial render
       renderCoaches(coaches);
-
-      // Modal Logic
-      const profileModal = document.getElementById('profile-modal');
-      const profileModalContent = document.getElementById('profile-modal-content');
+      
+      // Recommend Modal Logic
       const recommendModal = document.getElementById('recommend-modal');
       const recommendBtn = document.getElementById('recommend-btn');
       const closeRecommendModalBtn = document.getElementById('close-recommend-modal');
 
-      function openProfileModal(coach) {
-        const starRating = '★'.repeat(Math.floor(coach.rating)) + ('½'.repeat(coach.rating % 1 !== 0 ? 1 : 0)) + '☆'.repeat(5 - Math.ceil(coach.rating));
-        profileModalContent.innerHTML = `
-            <button id="close-profile-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10">&times;</button>
-            <div class="md:flex">
-                <div class="md:w-1/3">
-                    <img src="${coach.photo}" alt="${coach.name}" class="w-full h-full object-cover rounded-l-xl">
-                </div>
-                <div class="md:w-2/3 p-8">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h2 class="text-3xl font-bold text-white">${coach.name}</h2>
-                            <p class="text-md text-gray-400">${coach.area}</p>
-                        </div>
-                        ${coach.verified ? '<span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-2 py-1 rounded-full whitespace-nowrap">WPZ Verified</span>' : ''}
-                    </div>
-                     <div class="flex items-center mb-6">
-                        <div class="flex text-yellow-400" title="${coach.rating}">${starRating}</div>
-                        <span class="text-sm text-gray-400 ml-2">${coach.rating} (${coach.reviews} reviews)</span>
-                    </div>
-                    <p class="text-gray-300 mb-6">${coach.bio}</p>
-                    <h4 class="font-semibold text-white mb-2">Qualifications</h4>
-                    <ul class="list-disc list-inside text-gray-400 text-sm mb-6">
-                        ${coach.qualifications.map(q => `<li>${q}</li>`).join('')}
-                    </ul>
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <p class="text-2xl font-bold text-cyan-400">From R${coach.rate}<span class="text-lg font-normal text-gray-400">/hr</span></p>
-                        <a href="${coach.whatsapp}" target="_blank" class="px-6 py-3 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 transition-colors text-center">Contact on WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        `;
-        profileModal.classList.remove('hidden');
-        profileModal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-        document.getElementById('close-profile-modal').addEventListener('click', closeProfileModal);
-      }
-
-      function closeProfileModal() {
-        profileModal.classList.add('hidden');
-        profileModal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-      }
-      
-      coachesGrid.addEventListener('click', function(e) {
-          const button = e.target.closest('.view-profile-btn');
-          if(button) {
-              const coachId = parseInt(button.dataset.id);
-              const coach = coaches.find(c => c.id === coachId);
-              openProfileModal(coach);
-          }
-      });
-
-      profileModal.addEventListener('click', function(e) {
-          if (e.target === profileModal) {
-              closeProfileModal();
-          }
-      });
-      
-      // Recommend Modal Logic
       recommendBtn.addEventListener('click', () => {
         recommendModal.classList.remove('hidden');
         recommendModal.classList.add('flex');
