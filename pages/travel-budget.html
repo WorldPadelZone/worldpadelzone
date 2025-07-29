@@ -1,4 +1,4 @@
-<!-- Version 1.2 -->
+<!-- Version 1.3 -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -126,10 +126,10 @@
             <div class="container mx-auto px-4 lg:px-6">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center mb-12">Location Gallery</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="group relative overflow-hidden rounded-lg"><img src="https://placehold.co/600x600/1F2937/FFFFFF?text=Padel+Court" alt="Padel court view" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
-                    <div class="group relative overflow-hidden rounded-lg"><img src="https://placehold.co/600x600/374151/FFFFFF?text=Players" alt="Players on court" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
-                    <div class="group relative overflow-hidden rounded-lg"><img src="https://placehold.co/600x600/4B5563/FFFFFF?text=Social" alt="Socializing after a game" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
-                    <div class="group relative overflow-hidden rounded-lg"><img src="https://placehold.co/600x600/6B7280/FFFFFF?text=Scenery" alt="Scenic padel location" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/1.jpg" alt="Padel court view" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/2.jpg" alt="Players on court" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/3.jpg" alt="Socializing after a game" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/4.jpg" alt="Scenic padel location" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
                 </div>
             </div>
         </section>
@@ -208,11 +208,11 @@
         // --- Hero Carousel Logic ---
         const carouselContainer = document.getElementById('hero-carousel');
         const images = [
-            'https://placehold.co/1920x1080/111827/FFFFFF?text=Padel+Action+1',
-            'https://placehold.co/1920x1080/1F2937/FFFFFF?text=Padel+Action+2',
-            'https://placehold.co/1920x1080/374151/FFFFFF?text=Padel+Action+3',
-            'https://placehold.co/1920x1080/4B5563/FFFFFF?text=Padel+Action+4',
-            'https://placehold.co/1920x1080/6B7280/FFFFFF?text=Padel+Action+5'
+            'assets/images/1.jpg',
+            'assets/images/2.jpg',
+            'assets/images/3.jpg',
+            'assets/images/4.jpg',
+            'assets/images/5.jpg'
         ];
         let currentIndex = 0;
 
@@ -220,6 +220,7 @@
             const img = document.createElement('img');
             img.src = src;
             img.alt = `Padel action background ${index + 1}`;
+            img.onerror = function() { this.onerror=null; this.src='https://placehold.co/1920x1080/111827/FFFFFF?text=Image+Not+Found'; };
             if (index === 0) img.classList.add('active');
             carouselContainer.appendChild(img);
         });
