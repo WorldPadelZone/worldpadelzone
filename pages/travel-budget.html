@@ -1,0 +1,324 @@
+<!-- Version 1.1 -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Padel Travel Packages - South Africa | World Padel Zone</title>
+    <meta name="description" content="Discover affordable padel holiday packages in South Africa. Explore budget-friendly options in Cape Town, Johannesburg, and more without compromising on quality.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .surface-800 { background-color: #1F2937; /* bg-gray-800 */ }
+        .surface-700 { background-color: #374151; /* bg-gray-700 */ }
+
+        #hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        #hero-carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #hero-carousel img.active {
+            opacity: 1;
+        }
+
+        .filter-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .filter-btn.active {
+            background-color: #06B6D4; /* cyan-500 */
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-300 antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-30 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
+      <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="hidden md:flex items-center">
+            <a href="/index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'"></a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 text-sm">
+          <a href="/index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="./levelup-beginner.html" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
+          <a href="./coachescorner.html" class="text-gray-300 hover:text-white transition-colors">Coaches Corner</a>
+          <a href="./travel.html" class="text-cyan-400 font-semibold">Travel</a>
+          <a href="./news.html" class="text-gray-300 hover:text-white transition-colors">News</a>
+          <a href="./media.html" class="text-gray-300 hover:text-white transition-colors">Media</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors">Log In</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+        </div>
+        <div class="md:hidden flex items-center justify-between w-full">
+             <a href="/index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-8 w-auto" onerror="this.style.display='none'"></a>
+             <div>
+                <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors mr-4">Log In</a>
+                <a href="#" class="px-3 py-1.5 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
+             </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="relative text-white overflow-hidden">
+            <div id="hero-carousel">
+                <!-- Images will be cycled by JS -->
+            </div>
+            <div class="relative bg-gray-900 bg-opacity-70">
+                <div class="container mx-auto px-4 lg:px-6 py-24 md:py-32 text-center flex flex-col items-center">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Affordable Padel Packages</h1>
+                    <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Experience the best of South African padel without breaking the bank. Quality courts, comfortable stays, and unforgettable memories.</p>
+                    <div class="mt-8">
+                        <a href="#budget-packages" class="bg-cyan-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-cyan-600 transition-all shadow-lg hover:shadow-cyan-500/30">Explore Budget Deals</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Budget Packages Section -->
+        <section id="budget-packages" class="py-12 md:py-20">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Find Your Perfect Budget Trip</h2>
+                    <div id="filters" class="mt-6 flex justify-center gap-2 md:gap-4 flex-wrap">
+                        <button class="filter-btn active bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="all">All Provinces</button>
+                        <button class="filter-btn bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="Western Cape">Western Cape</button>
+                        <button class="filter-btn bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="Gauteng">Gauteng</button>
+                        <button class="filter-btn bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="KwaZulu-Natal">KwaZulu-Natal</button>
+                    </div>
+                </div>
+                <div id="packages-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Package cards will be injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Location Gallery -->
+        <section class="py-12 md:py-20 surface-800">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center mb-12">Location Gallery</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/1.jpg" alt="Padel court view" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/2.jpg" alt="Players on court" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/3.jpg" alt="Socializing after a game" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                    <div class="group relative overflow-hidden rounded-lg"><img src="assets/images/4.jpg" alt="Scenic padel location" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-black/40"></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. Enquiry Form Section -->
+        <section id="enquiry-form" class="py-12 md:py-20">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center">Enquire About a Package</h2>
+                    <p class="mt-3 text-lg text-gray-400 text-center mb-8">Select a package and send us your details. Our team will get back to you shortly!</p>
+                    <form id="formal-enquiry-form" class="surface-800 p-8 rounded-xl border border-gray-700 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="enquiry-name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                                <input type="text" id="enquiry-name" name="name" required class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white">
+                            </div>
+                            <div>
+                                <label for="enquiry-email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                                <input type="email" id="enquiry-email" name="email" required class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="enquiry-package" class="block text-sm font-medium text-gray-300 mb-2">Package of Interest</label>
+                            <select id="enquiry-package" name="package" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white">
+                                <!-- Options will be populated by JS -->
+                            </select>
+                        </div>
+                        <div>
+                            <label for="enquiry-message" class="block text-sm font-medium text-gray-300 mb-2">Your Message (Optional)</label>
+                            <textarea id="enquiry-message" name="message" rows="4" placeholder="e.g., Number of players, preferred travel dates..." class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="px-8 py-3 bg-cyan-500 text-white font-bold rounded-lg hover:bg-cyan-600 transition-colors">Send Enquiry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-gray-900 bg-opacity-95 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="text-center md:text-right">
+                <p class="text-sm text-gray-500">&copy; <span id="current-year"></span> WorldPadelZone. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
+        <div class="flex justify-around items-center h-16">
+            <a href="/index.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span class="text-xs font-medium">Home</span>
+            </a>
+            <a href="./levelup-beginner.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path><path d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0z"></path></svg>
+                <span class="text-xs font-medium">Level Up</span>
+            </a>
+            <a href="./coachescorner.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                <span class="text-xs font-medium">Coaches</span>
+            </a>
+            <a href="./travel.html" class="flex flex-col items-center text-cyan-400 transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                <span class="text-xs font-medium">Travel</span>
+            </a>
+        </div>
+    </nav>
+
+    <script type="module">
+        // --- General Setup ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Hero Carousel Logic ---
+        const carouselContainer = document.getElementById('hero-carousel');
+        const images = [
+            'assets/images/1.jpg',
+            'assets/images/2.jpg',
+            'assets/images/3.jpg',
+            'assets/images/4.jpg',
+            'assets/images/5.jpg'
+        ];
+        let currentIndex = 0;
+
+        images.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `Padel action background ${index + 1}`;
+            if (index === 0) img.classList.add('active');
+            carouselContainer.appendChild(img);
+        });
+        
+        const carouselImages = carouselContainer.getElementsByTagName('img');
+
+        function changeImage() {
+            if (carouselImages.length > 0) {
+                carouselImages[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % carouselImages.length;
+                carouselImages[currentIndex].classList.add('active');
+            }
+        }
+        setInterval(changeImage, 3000);
+
+        // --- Budget Packages Data and Filtering ---
+        const packages = [
+            { name: 'Cape Town City Break', province: 'Western Cape', price: 'R3,500', img: 'https://placehold.co/600x400/06B6D4/FFFFFF?text=Cape+Town', desc: '3 nights in a central apartment, with daily court access at a top city club.' },
+            { name: 'Joburg Padel Weekend', province: 'Gauteng', price: 'R3,200', img: 'https://placehold.co/600x400/10B981/FFFFFF?text=Joburg', desc: 'A weekend getaway in Sandton with guaranteed match play and comfortable lodging.' },
+            { name: 'Durban Coastal Play', province: 'KwaZulu-Natal', price: 'R3,800', img: 'https://placehold.co/600x400/EF4444/FFFFFF?text=Durban', desc: 'Enjoy padel by the sea with 4 nights accommodation and social mixers.' },
+            { name: 'Winelands Padel Escape', province: 'Western Cape', price: 'R4,200', img: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=Winelands', desc: 'Stay in Stellenbosch and combine your love for padel with wine tasting.' },
+            { name: 'Pretoria Padel Retreat', province: 'Gauteng', price: 'R2,900', img: 'https://placehold.co/600x400/F59E0B/FFFFFF?text=Pretoria', desc: 'An affordable and relaxed trip to the Jacaranda City with plenty of court time.' }
+        ];
+
+        const packagesGrid = document.getElementById('packages-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const enquiryPackageSelect = document.getElementById('enquiry-package');
+
+        function populateEnquiryOptions() {
+            enquiryPackageSelect.innerHTML = '';
+            packages.forEach(pkg => {
+                const option = document.createElement('option');
+                option.value = pkg.name;
+                option.textContent = `${pkg.name} - from ${pkg.price}`;
+                enquiryPackageSelect.appendChild(option);
+            });
+        }
+
+        function renderPackages(filter = 'all') {
+            packagesGrid.innerHTML = '';
+            const filteredPackages = packages.filter(p => filter === 'all' || p.province === filter);
+
+            if (filteredPackages.length === 0) {
+                packagesGrid.innerHTML = '<p class="text-center text-gray-400 col-span-full">No packages found for this province. Please check back soon!</p>';
+                return;
+            }
+            
+            filteredPackages.forEach(pkg => {
+                const card = document.createElement('div');
+                card.className = 'surface-800 rounded-xl border border-gray-700 overflow-hidden transition-transform hover:scale-105';
+                card.innerHTML = \`
+                    <img src="\${pkg.img}" alt="Padel in \${pkg.name}" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-white">\${pkg.name}</h3>
+                            <span class="bg-cyan-500/20 text-cyan-300 text-sm font-semibold px-3 py-1 rounded-full whitespace-nowrap">from \${pkg.price}</span>
+                        </div>
+                        <p class="mt-2 text-gray-400 text-sm">\${pkg.desc}</p>
+                        <a href="#enquiry-form" onclick="document.getElementById('enquiry-package').value='\${pkg.name}'" class="block w-full text-center mt-4 px-6 py-2 bg-gray-700 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">Enquire Now</a>
+                    </div>
+                \`;
+                packagesGrid.appendChild(card);
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                renderPackages(button.dataset.filter);
+            });
+        });
+
+        // --- Enquiry Form Logic ---
+        const enquiryForm = document.getElementById('formal-enquiry-form');
+        enquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('enquiry-name').value;
+            const email = document.getElementById('enquiry-email').value;
+            const packageName = document.getElementById('enquiry-package').value;
+            const message = document.getElementById('enquiry-message').value;
+
+            const subject = \`Enquiry for: \${packageName}\`;
+            const body = \`
+                Name: \${name}
+                Email: \${email}
+                Package: \${packageName}
+
+                Message:
+                \${message}
+            \`;
+
+            window.location.href = \`mailto:travel@worldpadelzone.com?subject=\${encodeURIComponent(subject)}&body=\${encodeURIComponent(body)}\`;
+        });
+
+        // Initial render
+        renderPackages();
+        populateEnquiryOptions();
+
+    </script>
+</body>
+</html>
