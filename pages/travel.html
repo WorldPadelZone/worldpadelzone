@@ -1,17 +1,14 @@
-<!-- Version 1.1 -->
+<!-- Version 1.4 -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Padel Travel in South Africa - World Padel Zone</title>
-    <meta name="description" content="Discover and book premier padel travel experiences and holidays in South Africa's top destinations like Cape Town and Johannesburg.">
+    <title>Padel Travel Packages in South Africa - World Padel Zone</title>
+    <meta name="description" content="Explore bespoke padel travel packages in South Africa. Choose from Budget, Social, and Elite Gourmet experiences in Cape Town, Sun City, and more.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Swiper.js for Carousel -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,49 +21,37 @@
             font-family: 'Inter', sans-serif;
             background-color: #111827; /* bg-gray-900 */
         }
-        /* Custom theme colors from the brief */
         .surface-800 { background-color: #1F2937; /* bg-gray-800 */ }
         .surface-700 { background-color: #374151; /* bg-gray-700 */ }
-        .text-brand { color: #3B82F6; /* text-blue-500 */ }
 
         .hero-bg {
-             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(17, 24, 39, 1)), url('assets/images/capehero.jpg');
+             /* Adjusted gradient for better text readability */
+             background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 1)), url('https://worldpadelzone.com/assets/images/capehero.jpg');
              background-size: cover;
              background-position: center;
         }
 
-        /* Carousel Navigation Arrows */
-        .swiper-button-next, .swiper-button-prev {
-            color: #ffffff;
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
+        .package-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        /* Filter button styles */
-        .filter-btn {
-            transition: all 0.2s ease-in-out;
-        }
-        .filter-btn.active {
-            background-color: #06B6D4; /* cyan-500 */
-            color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.2), 0 8px 10px -6px rgba(6, 182, 212, 0.2);
         }
         
-        /* Badge style */
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 9999px;
-            background-color: #06B6D4;
-            color: #ffffff;
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #06B6D4; /* Cyan */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -76,10 +61,10 @@
     <header class="sticky top-0 z-30 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
       <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div class="hidden md:flex items-center">
-            <a href="index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'"></a>
+            <a href="/index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-10 w-auto" onerror="this.style.display='none'"></a>
         </div>
         <div class="hidden md:flex items-center space-x-8 text-sm">
-          <a href="./index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="/index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
           <a href="./levelup-beginner.html" class="text-gray-300 hover:text-white transition-colors">Level Up</a>
           <a href="./coachescorner.html" class="text-gray-300 hover:text-white transition-colors">Coaches Corner</a>
           <a href="./travel.html" class="text-cyan-400 font-semibold">Travel</a>
@@ -92,7 +77,7 @@
         </div>
         <!-- Mobile Header (Logo and Sign Up) -->
         <div class="md:hidden flex items-center justify-between w-full">
-             <a href="./index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-8 w-auto" onerror="this.style.display='none'"></a>
+             <a href="/index.html"><img src="https://worldpadelzone.com/logo_wpz.png" alt="World Padel Zone Logo" class="h-8 w-auto" onerror="this.style.display='none'"></a>
              <div>
                 <a href="#" class="text-sm text-gray-300 hover:text-white transition-colors mr-4">Log In</a>
                 <a href="#" class="px-3 py-1.5 text-sm font-medium bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors">Sign Up</a>
@@ -105,98 +90,129 @@
         <!-- 1. Hero Section -->
         <section class="hero-bg text-white">
             <div class="container mx-auto px-4 lg:px-6 py-24 md:py-32 text-center flex flex-col items-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Discover South Africa’s Best Padel Destinations</h1>
-                <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">From the vibrant courts of Cape Town to the heart of Johannesburg, your ultimate padel adventure awaits.</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Curated Padel Travel Experiences</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Explore South Africa's premier padel destinations with packages designed for every type of player.</p>
                 <div class="mt-8">
-                    <a href="#featured-courts" class="bg-cyan-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-cyan-600 transition-all shadow-lg hover:shadow-cyan-500/30">Explore Packages</a>
+                    <a href="#packages" class="bg-cyan-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-cyan-600 transition-all shadow-lg hover:shadow-cyan-500/30">View Packages</a>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Destinations Grid & Filters -->
+        <!-- 2. Destinations Section -->
         <section class="py-12 md:py-20">
             <div class="container mx-auto px-4 lg:px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Featured Regions</h2>
-                    <div id="filters" class="mt-6 flex justify-center gap-2 md:gap-4">
-                        <button class="filter-btn active bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="all">All</button>
-                        <button class="filter-btn bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="Western Cape">Western Cape</button>
-                        <button class="filter-btn bg-gray-700 text-gray-200 font-semibold py-2 px-6 rounded-full" data-filter="Gauteng">Gauteng</button>
-                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Our Destinations</h2>
+                    <p class="mt-3 text-lg text-gray-400">From cityscapes to resort paradises, your court awaits.</p>
                 </div>
-                <div id="destinations-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cards will be injected by JS -->
+                <div id="destinations-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                    <!-- Destination cards will be injected by JS -->
                 </div>
             </div>
         </section>
 
-        <!-- 3. Featured Courts & Clubs Carousel -->
-        <section id="featured-courts" class="py-12 md:py-20 surface-800">
+        <!-- 3. Packages Section -->
+        <section id="packages" class="py-12 md:py-20 surface-800">
             <div class="container mx-auto px-4 lg:px-6">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center mb-12">Top Rated Courts & Clubs</h2>
-                <div class="swiper-container relative">
-                    <div class="swiper-wrapper">
-                        <!-- Slides will be injected by JS -->
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Choose Your Experience</h2>
+                    <p class="mt-3 text-lg text-gray-400">We have a travel style for every player and every budget.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Package Cards -->
+                    <div class="package-card surface-700 p-8 rounded-xl border border-gray-600 flex flex-col text-center items-center">
+                        <h3 class="text-2xl font-bold text-cyan-400">Budget</h3>
+                        <p class="mt-2 text-gray-400 flex-grow">Affordable packages focusing on great padel and comfortable stays without the frills.</p>
+                        <ul class="space-y-2 text-sm text-gray-300 my-6 text-left">
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Court bookings included</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>3-star accommodation</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Reliable transport options</li>
+                        </ul>
+                        <a href="#contact-form" class="mt-auto w-full text-center px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">Select Budget</a>
                     </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination text-center mt-8"></div>
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-prev hidden md:flex"></div>
-                    <div class="swiper-button-next hidden md:flex"></div>
+                    <div class="package-card surface-700 p-8 rounded-xl border-2 border-cyan-400 flex flex-col text-center items-center relative">
+                        <div class="absolute -top-4 bg-cyan-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">Most Popular</div>
+                        <h3 class="text-2xl font-bold text-cyan-400">Social</h3>
+                        <p class="mt-2 text-gray-400 flex-grow">The perfect balance of competitive padel, social events, and quality accommodation.</p>
+                        <ul class="space-y-2 text-sm text-gray-300 my-6 text-left">
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Organized matches & mixers</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>4-star accommodation</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Group dinners & activities</li>
+                        </ul>
+                        <a href="#contact-form" class="mt-auto w-full text-center px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">Select Social</a>
+                    </div>
+                    <div class="package-card surface-700 p-8 rounded-xl border border-gray-600 flex flex-col text-center items-center">
+                        <h3 class="text-2xl font-bold text-cyan-400">Elite Gourmet</h3>
+                        <p class="mt-2 text-gray-400 flex-grow">A luxury experience combining top-tier padel with fine dining and exclusive access.</p>
+                        <ul class="space-y-2 text-sm text-gray-300 my-6 text-left">
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Private coaching sessions</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>5-star accommodation</li>
+                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Gourmet dining experiences</li>
+                        </ul>
+                        <a href="#contact-form" class="mt-auto w-full text-center px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-cyan-600 transition-colors">Select Elite</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. Traveler Stories -->
-        <section class="py-12 md:py-20">
+        <!-- 4. Contact Form & AI Itinerary Section -->
+        <section id="contact-form" class="py-12 md:py-20">
             <div class="container mx-auto px-4 lg:px-6">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center mb-12">What Our Travelers Say</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Story Card 1 -->
-                    <div class="surface-700 p-6 rounded-xl border border-gray-600 flex flex-col">
-                        <p class="text-gray-300 leading-relaxed flex-grow">"The trip organized by WPZ was flawless. Playing padel with Table Mountain in the background is an experience I'll never forget. Highly recommended!"</p>
-                        <div class="flex items-center mt-4 pt-4 border-t border-gray-600">
-                            <img src="https://placehold.co/40x40/6366F1/FFFFFF?text=JS" class="w-10 h-10 rounded-full object-cover" alt="John Smith">
-                            <div class="ml-4">
-                                <p class="font-semibold text-white">John Smith</p>
-                                <p class="text-sm text-gray-400">Traveler from UK</p>
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center">Build Your Custom Package</h2>
+                    <p class="mt-3 text-lg text-gray-400 text-center mb-8">Fill out the form to get a personalized, AI-generated sample itinerary in seconds!</p>
+                    <form id="itinerary-form" class="surface-800 p-8 rounded-xl border border-gray-700 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white">
                             </div>
                         </div>
-                    </div>
-                    <!-- Story Card 2 -->
-                    <div class="surface-700 p-6 rounded-xl border border-gray-600 flex flex-col">
-                        <p class="text-gray-300 leading-relaxed flex-grow">"As a club owner, scouting new venues was a breeze. The custom itinerary was perfect and saved me so much time. The courts in Sandton are top-notch."</p>
-                        <div class="flex items-center mt-4 pt-4 border-t border-gray-600">
-                            <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=AM" class="w-10 h-10 rounded-full object-cover" alt="Anna Müller">
-                            <div class="ml-4">
-                                <p class="font-semibold text-white">Anna Müller</p>
-                                <p class="text-sm text-gray-400">Club Owner, Germany</p>
+                        <div>
+                            <label for="destinations" class="block text-sm font-medium text-gray-300 mb-2">Preferred Destination(s)</label>
+                            <select id="destinations" name="destinations" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white">
+                                <option>Cape Town</option>
+                                <option>Sun City</option>
+                                <option>Johannesburg</option>
+                                <option>Pretoria</option>
+                                <option>KwaZulu-Natal</option>
+                                <option>Multiple / Undecided</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Package Type</label>
+                            <div class="grid grid-cols-3 gap-4">
+                                <label class="flex items-center p-3 bg-gray-700 rounded-md cursor-pointer"><input type="radio" name="package_type" value="Budget" class="mr-2 bg-gray-800 border-gray-600 text-cyan-500 focus:ring-cyan-500" checked> Budget</label>
+                                <label class="flex items-center p-3 bg-gray-700 rounded-md cursor-pointer"><input type="radio" name="package_type" value="Social" class="mr-2 bg-gray-800 border-gray-600 text-cyan-500 focus:ring-cyan-500"> Social</label>
+                                <label class="flex items-center p-3 bg-gray-700 rounded-md cursor-pointer"><input type="radio" name="package_type" value="Elite Gourmet" class="mr-2 bg-gray-800 border-gray-600 text-cyan-500 focus:ring-cyan-500"> Elite</label>
                             </div>
                         </div>
-                    </div>
-                    <!-- Story Card 3 -->
-                    <div class="surface-700 p-6 rounded-xl border border-gray-600 flex flex-col">
-                        <p class="text-gray-300 leading-relaxed flex-grow">"Amazing holiday! We combined a safari with daily padel sessions. The WPZ team handled everything. We'll be back for sure."</p>
-                        <div class="flex items-center mt-4 pt-4 border-t border-gray-600">
-                            <img src="https://placehold.co/40x40/F59E0B/FFFFFF?text=CS" class="w-10 h-10 rounded-full object-cover" alt="Carlos Sainz">
-                            <div class="ml-4">
-                                <p class="font-semibold text-white">Carlos Sainz</p>
-                                <p class="text-sm text-gray-400">Padel Enthusiast, Spain</p>
-                            </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Additional Information</label>
+                            <textarea id="message" name="message" rows="4" placeholder="e.g., Number of players, travel dates, specific requests..." class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white"></textarea>
                         </div>
+                        <div class="text-center">
+                            <button type="submit" class="px-8 py-3 bg-cyan-500 text-white font-bold rounded-lg hover:bg-cyan-600 transition-colors flex items-center justify-center w-full md:w-auto mx-auto">
+                                ✨ Generate Sample Itinerary
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- AI Itinerary Result Section -->
+                    <div id="itinerary-result-container" class="mt-8 hidden">
+                        <div id="loading-spinner" class="flex justify-center items-center py-8">
+                            <div class="loader"></div>
+                        </div>
+                        <div id="itinerary-content" class="surface-800 p-8 rounded-xl border border-gray-700">
+                           <!-- Generated content will appear here -->
+                        </div>
+                         <p class="text-xs text-gray-500 text-center mt-4">This is an AI-generated sample. Our team will contact you to finalize your perfect trip!</p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 5. Call to Action -->
-        <section class="py-12 md:py-20 surface-800">
-            <div class="container mx-auto px-4 lg:px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Ready for Your Padel Adventure?</h2>
-                <p class="mt-3 text-lg text-gray-400 max-w-2xl mx-auto">Get exclusive deals and updates, or let us build a custom trip just for you.</p>
-                <div class="mt-8 flex justify-center items-center gap-4 flex-wrap">
-                    <button class="bg-cyan-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-cyan-600 transition-all">Subscribe for Deals</button>
-                    <button class="bg-gray-700 text-white font-semibold py-3 px-8 rounded-lg hover:bg-gray-600 transition-all">Request Custom Itinerary</button>
                 </div>
             </div>
         </section>
@@ -210,7 +226,7 @@
                     <h3 class="text-lg font-semibold text-white mb-2">Subscribe to our Newsletter</h3>
                     <p class="text-gray-400 mb-4 text-sm">Get the latest news, travel deals, and padel tips straight to your inbox.</p>
                     <form action="mailto:hello@worldpadelzone.com" method="post" enctype="text/plain" class="flex flex-col sm:flex-row gap-2 max-w-md">
-                        <input type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white text-sm">
+                        <input type="email" name="email_subscribe" placeholder="Enter your email" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white text-sm">
                         <button type="submit" class="px-5 py-2 bg-cyan-500 text-white font-medium rounded-md hover:bg-cyan-600 transition-colors whitespace-nowrap text-sm">Subscribe</button>
                     </form>
                 </div>
@@ -239,7 +255,7 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
         <div class="flex justify-around items-center h-16">
-            <a href="./index.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+            <a href="/index.html" class="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                 <span class="text-xs font-medium">Home</span>
             </a>
@@ -258,102 +274,119 @@
         </div>
     </nav>
 
-    <!-- Swiper.js -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
     <script type="module">
         // --- Data for dynamic content ---
         const destinations = [
-            { name: 'Cape Town', province: 'Western Cape', img: 'https://placehold.co/600x400/06B6D4/FFFFFF?text=Cape+Town', desc: 'Play with iconic views of Table Mountain and enjoy a vibrant city life.' },
-            { name: 'Johannesburg', province: 'Gauteng', img: 'https://placehold.co/600x400/F59E0B/FFFFFF?text=Johannesburg', desc: 'Experience the fast-paced energy of SA’s economic hub and its growing padel scene.' },
-            { name: 'Stellenbosch', province: 'Western Cape', img: 'https://placehold.co/600x400/10B981/FFFFFF?text=Stellenbosch', desc: 'Combine your love for padel with world-class wine tasting in the beautiful Winelands.' },
-            { name: 'Pretoria', province: 'Gauteng', img: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=Pretoria', desc: 'Discover the Jacaranda City’s friendly clubs and relaxed atmosphere.' },
-            { name: 'Durban', province: 'KwaZulu-Natal', img: 'https://placehold.co/600x400/EF4444/FFFFFF?text=Durban', desc: 'Enjoy padel by the sea in this warm, coastal city.' },
-            { name: 'Garden Route', province: 'Western Cape', img: 'https://placehold.co/600x400/22C55E/FFFFFF?text=Garden+Route', desc: 'A scenic journey with fantastic padel stops along the way.' },
-        ];
-
-        const featuredCourts = [
-            { name: 'Africa Padel, V&A Waterfront', rating: '4.9', rate: 'R400/hr', img: 'https://placehold.co/400x300/1a202c/ffffff?text=Court+1' },
-            { name: 'The Padel Hub, Sandton', rating: '4.8', rate: 'R450/hr', img: 'https://placehold.co/400x300/1a202c/ffffff?text=Court+2' },
-            { name: 'Action Padel, Durban', rating: '4.7', rate: 'R350/hr', img: 'https://placehold.co/400x300/1a202c/ffffff?text=Court+3' },
-            { name: 'Stellenbosch Padel Club', rating: '4.9', rate: 'R380/hr', img: 'https://placehold.co/400x300/1a202c/ffffff?text=Court+4' },
+            { name: 'Cape Town', img: 'https://placehold.co/400x400/06B6D4/FFFFFF?text=Cape+Town' },
+            { name: 'Sun City', img: 'https://placehold.co/400x400/F59E0B/FFFFFF?text=Sun+City' },
+            { name: 'Johannesburg', img: 'https://placehold.co/400x400/10B981/FFFFFF?text=Joburg' },
+            { name: 'Pretoria', img: 'https://placehold.co/400x400/8B5CF6/FFFFFF?text=Pretoria' },
+            { name: 'KwaZulu-Natal', img: 'https://placehold.co/400x400/EF4444/FFFFFF?text=KZN' },
+            { name: 'Design My Own', img: 'https://placehold.co/400x400/0891B2/FFFFFF?text=Custom', type: 'link', href: '#contact-form' }
         ];
 
         // --- General Setup ---
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // --- Destinations Grid & Filtering Logic ---
+        // --- Destinations Grid Rendering ---
         const grid = document.getElementById('destinations-grid');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-
-        function renderDestinations(filter = 'all') {
+        
+        function renderDestinations() {
             grid.innerHTML = '';
-            const filteredDests = destinations.filter(d => filter === 'all' || d.province === filter);
-            
-            filteredDests.forEach(dest => {
-                const card = document.createElement('div');
-                card.className = 'surface-800 rounded-xl border border-gray-700 overflow-hidden transition-transform hover:scale-105';
-                card.innerHTML = `
-                    <img src="${dest.img}" alt="Padel in ${dest.name}" class="w-full h-48 object-cover" loading="lazy">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">${dest.name}</h3>
-                        <p class="mt-2 text-gray-400 text-sm">${dest.desc}</p>
-                        <div class="mt-4"><span class="badge">Learn More</span></div>
+            destinations.forEach(dest => {
+                const isLink = dest.type === 'link';
+                const tag = isLink ? 'a' : 'div';
+                const element = document.createElement(tag);
+                
+                element.className = 'relative rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/30';
+                if (isLink) {
+                    element.href = dest.href;
+                }
+
+                element.innerHTML = `
+                    <img src="${dest.img}" alt="${dest.name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <h3 class="text-xl font-bold text-white text-center px-2">${dest.name}</h3>
                     </div>
                 `;
-                grid.appendChild(card);
+                grid.appendChild(element);
             });
         }
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                renderDestinations(button.dataset.filter);
-            });
-        });
-        
-        // --- Swiper Carousel for Featured Courts ---
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-        featuredCourts.forEach(court => {
-            const slide = document.createElement('div');
-            slide.className = 'swiper-slide';
-            slide.innerHTML = `
-                <div class="surface-800 rounded-xl overflow-hidden border border-gray-700">
-                    <img src="${court.img}" alt="${court.name}" class="w-full h-56 object-cover" loading="lazy">
-                    <div class="p-4">
-                        <h4 class="font-bold text-white">${court.name}</h4>
-                        <div class="flex justify-between items-center mt-2 text-sm">
-                            <span class="text-yellow-400 font-semibold">⭐ ${court.rating}</span>
-                            <span class="text-gray-300">From ${court.rate}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            swiperWrapper.appendChild(slide);
-        });
-
-        const swiper = new Swiper('.swiper-container', {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 16,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 32 },
-            }
-        });
-
-        // --- Initial Render ---
         renderDestinations();
 
+        // --- Gemini AI Itinerary Generator ---
+        const itineraryForm = document.getElementById('itinerary-form');
+        const resultContainer = document.getElementById('itinerary-result-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const itineraryContent = document.getElementById('itinerary-content');
+
+        itineraryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(itineraryForm);
+            const name = formData.get('name');
+            const destination = formData.get('destinations');
+            const packageType = formData.get('package_type');
+            const additionalInfo = formData.get('message');
+
+            resultContainer.classList.remove('hidden');
+            loadingSpinner.classList.remove('hidden');
+            itineraryContent.classList.add('hidden');
+            itineraryContent.innerHTML = '';
+
+            const prompt = \`
+                Act as a "Padel Travel Concierge" for World Padel Zone. 
+                A customer named \${name} is interested in a trip to \${destination}.
+                Their chosen travel style is "\${packageType}".
+                Their additional requests are: "\${additionalInfo}".
+
+                Please generate a sample 3-day itinerary for their trip. The tone should be exciting and welcoming.
+                The output must be in HTML format.
+                - Start with a main heading <h2>, like "Your Sample \${packageType} Itinerary for \${destination}!".
+                - For each day, use a subheading <h3> (e.g., "Day 1: Arrival & Padel Fun").
+                - Under each day, provide a short paragraph describing the day's activities.
+                - Include specific padel activities (e.g., "2-hour court booking at Africa Padel").
+                - Include dining or social suggestions that match the "\${packageType}" style. For example, for 'Budget', suggest a casual eatery. For 'Elite Gourmet', suggest a fine dining restaurant. For 'Social', suggest a popular group-friendly restaurant.
+                - Do not include any CSS or JavaScript, only use basic HTML tags like <h2>, <h3>, <p>, <strong>, and <ul> with <li>.
+                - Make the response engaging and well-structured.
+            \`;
+            
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // API key will be provided by the environment
+                const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\${apiKey}\`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(\`API request failed with status \${response.status}\`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const generatedText = result.candidates[0].content.parts[0].text;
+                    itineraryContent.innerHTML = generatedText;
+                } else {
+                    throw new Error("No content received from API.");
+                }
+
+            } catch (error) {
+                console.error("Error fetching from Gemini API:", error);
+                itineraryContent.innerHTML = '<p class="text-red-400">Sorry, we couldn\\'t generate an itinerary at this moment. Please try again later.</p>';
+            } finally {
+                loadingSpinner.classList.add('hidden');
+                itineraryContent.classList.remove('hidden');
+            }
+        });
     </script>
 </body>
 </html>
